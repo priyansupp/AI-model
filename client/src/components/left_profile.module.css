@@ -1,0 +1,41 @@
+.left_align {
+    background-color: green;
+    width: 100%;
+    padding: 20px 0 20px 20px;
+    height: 100%;
+}
+
+
+.left_new_btn {
+    background-color: black;
+    width: 100%;
+    padding: 20px 0 20px 20px;
+    height: 80px;
+}
+
+
+.left_align > span {
+    display: block;
+}
+
+.username {
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.left_options {
+    font-family: sans-serif;
+    font-size: 16px;
+    margin-bottom: 2px;
+    font-weight: 400;
+    color: black;
+    cursor: pointer;
+}
+
+.left_options:hover {
+    text-decoration: underline;
+}
+

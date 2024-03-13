@@ -1,0 +1,31 @@
+.homepage {
+  background-color: yellow;
+  height: var(--maxH);
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+}
+
+.homepage > .cont {
+  display: flex;
+  flex-direction: row;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  height: 100%; 
+}
+.cont > .left {
+  background-color: red;
+  flex: 20%;
+}
+
+.cont > .center {
+  background-color: black;
+  flex: 50%;
+}
+
+.cont > .right {
+  background-color: green;
+  flex: 30%;
+}
+

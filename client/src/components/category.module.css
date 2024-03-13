@@ -1,0 +1,17 @@
+.catdiv {
+    height: 20px;
+    margin: 5px 5px 5px 10px;
+}
+
+.category {
+    padding: 0 10px 0 10px;
+    background-color: aqua;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.category:hover {
+    background-color: grey;
+    box-shadow: 2px;
+}
