@@ -5,8 +5,8 @@ import styles from './categories.module.css';
 
 function Categories() {
     const list = [
-        {name: 'Models', id: 1},
-        {name: 'Blogs', id: 2}
+        {name: 'Tasks', id: 1},
+        {name: 'Languages', id: 2}
     ];
     return (
         <div className={styles.listings}>

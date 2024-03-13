@@ -10,7 +10,7 @@ function ModelCard() {
                     <img src={logo}/>
                 </div>
                 <div className={styles.details}>
-                    <div>Model and company name here</div>
+                    <div>Username / Modelname</div>
                     <ul>
                         <li>Category</li>
                         <li>Likes</li>
