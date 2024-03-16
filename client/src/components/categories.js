@@ -3,6 +3,8 @@ import Lists from "./lists";
 import Category from "./category";
 import styles from './categories.module.css';
 
+// TODO: Implement the filter functionality
+
 function Categories() {
     const list = [
         {name: 'Tasks', id: 1},

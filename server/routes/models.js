@@ -1,27 +1,9 @@
 const router = require('express').Router();
-const UserModel = require('../models/user');
 const AIModel = require('../models/aimodel');
 const { requireLoggedIn } = require('../middleware/auth_middleware');
 
-
-// GET profile of user
-router.get('/profile/:id', requireLoggedIn, async (req, res) => {
-    await UserModel.findById(req.params.id)
-    .then((doc) => {
-        console.log(`The following docs are retrieved: ${doc}`);
-        res.send(doc);
-    })
-    .catch(err => {
-        console.log(`Profile could not be fetched. Error: ${err}`);
-        res.send({
-            error: "Profile could not be fetched."
-        });
-    });
-});
-
-
 // GET all models created by a particular user
-router.get('/models/profile/:id', requireLoggedIn, async (req, res) => {
+router.get('/profile/:id', requireLoggedIn, async (req, res) => {
     await AIModel.find({ userid: req.params.id })
     .then((docs) => {
         console.log(`The following docs are retrieved: ${docs}`);
@@ -37,7 +19,7 @@ router.get('/models/profile/:id', requireLoggedIn, async (req, res) => {
 
 
 // GET all models
-router.get('/models', async (req, res) => {
+router.get('/', async (req, res) => {
     await AIModel.find()
     .then((docs) => {
         console.log(`The following docs are retrieved: ${docs}`);
@@ -53,7 +35,7 @@ router.get('/models', async (req, res) => {
 
 
 // GET a particular model
-router.get('/models/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     await AIModel.findById(req.params.id)
     .then((doc) => {
         console.log(`The following docs are retrieved: ${doc}`);
@@ -70,7 +52,7 @@ router.get('/models/:id', async (req, res) => {
 
 
 // POST a model
-router.post('/models', requireLoggedIn, async (req, res) => {
+router.post('/', requireLoggedIn, async (req, res) => {
     // validate first
 
     const { Userid, Modelname, Desc, Url, Cat, Lib } = req.body;
@@ -103,7 +85,35 @@ router.post('/models', requireLoggedIn, async (req, res) => {
     });
 });
 
-
+router.put('/:id', async (req, res) => {
+    const { likes, rating } = req.body;
+    await AIModel.findById(req.params.id)
+    .then(async doc => {
+        doc.likes= likes;
+        if(!rating) {
+            doc.rating = (doc.count * doc.rating + rating) / (doc.count + 1);
+            doc.count += 1;
+        }
+        await doc.save()
+        .then(() => {
+            console.log('Successfully updated');
+            res.send({
+                success: "Successfully updated"
+            });
+        })
+        .catch(e => {
+            console.log(`Error: ${e}`);
+            res.send({
+                error: "Failed to update"
+            });
+        })
+    })
+    .catch(e => {
+        console.log(`Error: ${e}`);
+        res.send({
+            error: "Could not find specified document"
+        });
+    });
+})
 
 module.exports = router;
-

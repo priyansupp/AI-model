@@ -3,7 +3,7 @@ const app = express();
 // app.use(express.json());
 const cookieParser = require('cookie-parser');
 const authRoutes = require('./routes/auth.js');
-const apiRoutes = require('./routes/routes.js');
+const apiRoutes = require('./routes/api.js');
 
 // configure the environment variables
 const dotenv = require('dotenv');

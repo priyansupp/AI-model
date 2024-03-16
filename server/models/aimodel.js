@@ -19,6 +19,14 @@ const AIModelSchema = new Schema({
         enum: [0,1,2,3,4,5],
         default: 0
     },
+    likes: {
+        type: Number,
+        default: 0
+    },
+    count: {
+        type: Number,
+        default: 0,
+    },
     url: {
         type: String,
         required: true,

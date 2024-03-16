@@ -15,7 +15,7 @@ router.post('/register', async (req, res) => {
     } else {
         const token = jwt.sign({id: toString(user._id)}, "secret-key-here", {expiresIn: "1d"});
         res.cookie("token", token);
-        res.status(201).json({user: user._id});
+        res.status(201).json({userid: user._id});
     }
 });
 
@@ -27,7 +27,7 @@ router.post('/login', async (req, res) => {
             if(!match) res.json({error: "Username and password is incorrect"});
             const token = jwt.sign({id: toString(user._id)}, "secret-key-here", {expiresIn: "1d"});
             res.cookie("token", token);
-            res.status(201).json({user: user._id});
+            res.status(201).json({userid: user._id});
         });
     } else {
         console.log(user);
@@ -37,7 +37,8 @@ router.post('/login', async (req, res) => {
 })
 
 router.get('/logout', (req, res) => {
-    res.cookie('token', '', {expiresIn: 1});
+    res.clearCookie('token');
+    res.clearCookie('userid');
     res.redirect('/');
 })
 
