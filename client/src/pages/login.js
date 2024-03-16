@@ -12,8 +12,8 @@ function Login() {
 
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
-    const [cookie, setCookie] = useCookies(['userid']);
-    const { setIsAuthenticated } = useContext(AuthContext);
+    const [_, setCookie] = useCookies(['userid']);
+    const { setIsAuthenticated, setUser } = useContext(AuthContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -21,8 +21,17 @@ function Login() {
             email: email,
             password: pass
         }).then((response) => {
-            console.log(`User logged in: ${response.data}`);
-            setCookie('userid', response.data['userid'], {path: '/'});
+            const user1 = response.data.user;
+            console.log(`User logged in: ${user1.username}`);
+            const user2 = {
+                email: user1.email,
+                username: user1.username,
+                userid: toString(user1._id),
+                name: user1.name
+            }
+            // console.log(user2);
+            setUser(user2);
+            setCookie('userid', toString(response.data.user._id), {path: '/'});
             setIsAuthenticated(true);
             navigate('/');
         }).catch(e => {

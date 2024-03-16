@@ -4,8 +4,9 @@ import OpenAI from 'openai';
 
 const CenterCont = () => {
     const openai = new OpenAI({
-      apiKey: process.env.REACT_APP_OPENAI_API_KEY,
-      organization: process.env.REACT_APP_OPENAI_API_ORG,
+      // apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+      apiKey: "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",
+      // organization: process.env.REACT_APP_OPENAI_API_ORG,
       dangerouslyAllowBrowser: true
     });
   

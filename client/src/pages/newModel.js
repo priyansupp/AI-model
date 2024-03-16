@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './newModel.module.css';
+import axios from 'axios';
+import { AuthContext } from '../context/authContext';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function NewModelPage() {
-  const [userName, setUserName] = useState('');
+
+  const { user } = useContext(AuthContext);
+  console.log(user.username);
+
+  const navigator = useNavigate();
   const [modelName, setModelName] = useState('');
   const [category, setCategory] = useState('');
+  const [library, setLibrary] = useState('');
   const [githubLink, setGithubLink] = useState('');
   const [modelDescription, setModelDescription] = useState('');
   const [validationError, setValidationError] = useState('');
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,13 +27,22 @@ function NewModelPage() {
       setValidationError('Model description should be less than 250 words.');
       return;
     }
-
-    setUserName('');
-    setModelName('');
-    setCategory('');
-    setGithubLink('');
-    setModelDescription('');
-    setValidationError('');
+    const data = {
+      Userid: toString(user._id),
+      Modelname: modelName,
+      Desc: modelDescription,
+      Url: githubLink,
+      Cat: category,
+      Lib: library
+    }
+    axios.post('/models', data)
+    .then(response => {
+      console.log(response.data.success);
+      navigator('/');
+    })
+    .catch(e => {
+      console.log(`Error in posting model: ${e}`);
+    })
   };
 
   return (
@@ -39,8 +58,7 @@ function NewModelPage() {
                   <input
                     type='text'
                     className='form-control'
-                    value={userName}
-                    onChange={(e) => setUserName(e.target.value)}
+                    value={user.username}
                     required
                   />
                 </div>
@@ -62,7 +80,22 @@ function NewModelPage() {
                     onChange={(e) => setCategory(e.target.value)}
                     required
                   >
-                    <option value=''>Select category</option>
+                    <option value=''>Select Category</option>
+                    <option value='A'>A</option>
+                    <option value='B'>B</option>
+                    <option value='C'>C</option>
+                    <option value='D'>D</option>
+                  </select>
+                </div>
+                <div className='form-group'>
+                  <label className= {styles['label']}>Library:</label>
+                  <select
+                    className='form-control'
+                    value={library}
+                    onChange={(e) => setLibrary(e.target.value)}
+                    required
+                  >
+                    <option value=''>Select Library</option>
                     <option value='A'>A</option>
                     <option value='B'>B</option>
                     <option value='C'>C</option>

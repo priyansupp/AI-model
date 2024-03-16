@@ -1,8 +1,8 @@
 import React from 'react';
-import Button from 'react-bootstrap/esm/Button';
 import styles from './left_profile.module.css';
 import { Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 function LeftProfile() {
 
@@ -15,7 +15,16 @@ function LeftProfile() {
     return (
         <div style={{height: 'calc(100vh - 56px - 80px)' }}>
             <div className={styles.left_new_btn}>
-                <Button>New</Button>
+                <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        New
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.Item href="/newModel">New Model</Dropdown.Item>
+                        <Dropdown.Item href="/newBlog">New Blog</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
             </div>
             <div className={styles.left_align}>
                 <span className={styles.username}>Username</span>

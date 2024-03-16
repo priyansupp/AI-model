@@ -3,15 +3,20 @@ import styles from './lists.module.css';
 
 function Lists(props) {
 
-    const handleClick = (e) => {
-        props.setClicked(!props.clicked);
+    const { list, setTask, setLibrary, setClicked } = props;
+
+    const handleClick = (e, id) => {
+        if(id) setClicked(1);
+        else setClicked(0);
+        setTask('All');
+        setLibrary('All');
     }
 
     return (
         <div className={styles.list}>
             <ul>
                 {
-                    props.list.map((item) => <li onClick={handleClick} key={item.id}>{item.name}</li>)
+                    list.map((item) => <li onClick={(e) => handleClick(e, item.id)} key={item.id}>{item.name}</li>)
                 }
             </ul>
         </div>

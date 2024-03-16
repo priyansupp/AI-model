@@ -5,6 +5,11 @@ import Lists from './lists';
 import { useState } from "react";
 import axios from "axios";
 
+// dummy function to pass in <Lists> component
+const foo = () => {
+    return;
+}
+
 function Spotlight() {
     const [clicked, setClicked] = useState(0);
     const [docs, setDocs] = useState([]);
@@ -30,7 +35,7 @@ function Spotlight() {
             <div className={styles.spotlight}>
                 Spotlight
             </div>
-            <Lists list={list} setClicked={setClicked} clicked={clicked}/>
+            <Lists list={list} setTask={foo} setLibrary={foo} setClicked={setClicked} clicked={clicked}/>
 
             <div style={{padding: '20px', backgroundColor: 'magenta', height: 'calc(100vh - 56px - 80px - 50px)', width: '100%'}}>
                 {docs && docs.map(doc => <ModelCard key={doc._id} clicked={clicked} doc={doc}/>)}

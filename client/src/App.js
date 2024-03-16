@@ -13,9 +13,10 @@ import { useState } from 'react';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState({});
   
   return (
-    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated}}>
+    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, user, setUser }}>
       <CookiesProvider defaultSetOptions={{ path: '/' }}>
         <div className="App">
           <Header />
