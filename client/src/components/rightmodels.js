@@ -6,6 +6,10 @@ import axios from "axios";
 
 // TODO: Implement the filter functionality
 
+const filter = () => {
+    return "Hello";
+}
+
 function RightModels() {
     const [docs, setDocs] = useState([]);
     useEffect(() => {
