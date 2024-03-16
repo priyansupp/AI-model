@@ -6,11 +6,11 @@ const { requireLoggedIn } = require('../middleware/auth_middleware');
 router.get('/profile/:id', requireLoggedIn, async (req, res) => {
     await AIModel.find({ userid: req.params.id })
     .then((docs) => {
-        console.log(`The following docs are retrieved: ${docs}`);
+        // console.log(`The following docs are retrieved: ${docs}`);
         res.send(docs);
     })
     .catch(err => {
-        console.log(`Documents could not be fetched. Error: ${err}`);
+        // console.log(`Documents could not be fetched. Error: ${err}`);
         res.send({
             error: "Documents could not be fetched."
         });
@@ -22,11 +22,11 @@ router.get('/profile/:id', requireLoggedIn, async (req, res) => {
 router.get('/', async (req, res) => {
     await AIModel.find()
     .then((docs) => {
-        console.log(`The following docs are retrieved: ${docs}`);
+        // console.log(`The following docs are retrieved: ${docs}`);
         res.send(docs);
     })
     .catch(err => {
-        console.log(`Documents could not be fetched. Error: ${err}`);
+        // console.log(`Documents could not be fetched. Error: ${err}`);
         res.send({
             error: "Documents could not be fetched."
         });
@@ -38,11 +38,11 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     await AIModel.findById(req.params.id)
     .then((doc) => {
-        console.log(`The following docs are retrieved: ${doc}`);
+        // console.log(`The following docs are retrieved: ${doc}`);
         res.send(doc);
     })
     .catch(err => {
-        console.log(`Document could not be fetched. Error: ${err}`);
+        // console.log(`Document could not be fetched. Error: ${err}`);
         res.send({
             error: "Document could not be fetched."
         });
@@ -71,14 +71,14 @@ router.post('/', requireLoggedIn, async (req, res) => {
     });
     await aimodel.save()
     .then((doc) => {
-        console.log(`The document has been saved: ${doc}`);
+        // console.log(`The document has been saved: ${doc}`);
         res.send({
             success: "Document saved successfully.",
             id: doc._id
         });
     })
     .catch(err => {
-        console.log(`Document could not be saved. Error: ${err}`);
+        // console.log(`Document could not be saved. Error: ${err}`);
         res.send({
             error: "Document could not be saved."
         });
@@ -96,20 +96,20 @@ router.put('/:id', async (req, res) => {
         }
         await doc.save()
         .then(() => {
-            console.log('Successfully updated');
+            // console.log('Successfully updated');
             res.send({
                 success: "Successfully updated"
             });
         })
         .catch(e => {
-            console.log(`Error: ${e}`);
+            // console.log(`Error: ${e}`);
             res.send({
                 error: "Failed to update"
             });
         })
     })
     .catch(e => {
-        console.log(`Error: ${e}`);
+        // console.log(`Error: ${e}`);
         res.send({
             error: "Could not find specified document"
         });

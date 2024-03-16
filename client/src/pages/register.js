@@ -1,9 +1,11 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
+import { AuthContext } from '../context/authContext';
+
 
 function Register() {
     const navigate = useNavigate();
@@ -12,7 +14,8 @@ function Register() {
     const [pass, setPass] = useState('');
     const [username, setUsername] = useState('');
     const [name, setName] = useState('');
-    const [cookie, setCookie] = useCookies(['userid']);
+    const [_, setCookie] = useCookies(['userid']);
+    const { setIsAuthenticated, setUser } = useContext(AuthContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -22,8 +25,10 @@ function Register() {
             username: username,
             name: name
         }).then((response) => {
-            console.log(`User logged in: ${response.data}`);
-            setCookie('userid', response.data['userid'], {path: '/'});
+            console.log(`User logged in: ${response.data.user.username}`);
+            setUser(response.data.user);
+            setCookie('userid', toString(response.data.user._id ), {path: '/'});
+            setIsAuthenticated(true);
             navigate('/');
         }).catch(e => {
             console.log(`Error: ${e}`);

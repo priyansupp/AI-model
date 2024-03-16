@@ -9,11 +9,11 @@ const modelRoutes = require('./models');
 router.get('/profile/:id', async (req, res) => {
     await UserModel.findById(req.params.id)
     .then((doc) => {
-        console.log(`The following docs are retrieved: ${doc}`);
+        // console.log(`The following docs are retrieved: ${doc}`);
         res.send(doc);
     })
     .catch(err => {
-        console.log(`Profile could not be fetched. Error: ${err}`);
+        // console.log(`Profile could not be fetched. Error: ${err}`);
         res.send({
             error: "Profile could not be fetched."
         });

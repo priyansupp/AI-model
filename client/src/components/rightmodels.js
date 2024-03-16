@@ -4,19 +4,28 @@ import styles from './rightmodels.module.css';
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-// TODO: Implement the filter functionality
 
-function RightModels() {
+function RightModels(props) {
+
+    const { task, library } = props;
     const [docs, setDocs] = useState([]);
     useEffect(() => {
         axios.get('/api/models')
         .then((response) => {
-            setDocs(response.data);
+            const data = response.data;
+            const res1 = data.filter(x => {
+                return ((x.category === task) || (task === 'All'));
+            });
+            const res2 = res1.filter(x => {
+                return ((x.library === library) || (library === 'All'));
+            });
+            setDocs(res2);
         })
         .catch(e => {
             console.log(`Error : ${e}`);
         })
-    }, [])
+    }, [task, library]);
+
     return (
         <div style={{height: 'calc(100vh - 56px - 80px)' }}>
             <div className={styles.models}>
