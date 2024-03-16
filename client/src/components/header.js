@@ -1,5 +1,4 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -8,8 +7,26 @@ import Navbar from 'react-bootstrap/Navbar';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
+import { AuthContext } from '../context/authContext';
+import axios from 'axios';
 
 function Header() {
+  const { setIsAuthenticated } = useContext(AuthContext);
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    axios.get('/auth/logout')
+    .then(() => {
+      console.log(`Logged out`);
+    })
+    .catch(e => {
+      console.log(`Error in logging out: ${e}`);
+    });
+    // removeCookie('userid');
+    // removeCookie('token');
+    setIsAuthenticated(false);
+  }
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
@@ -41,7 +58,7 @@ function Header() {
               + New Blog
             </Dropdown.Item>
             <Dropdown.Divider />
-            <Dropdown.Item eventKey="4">Logout</Dropdown.Item>
+            <Dropdown.Item onClick={handleLogout} eventKey="4">Logout</Dropdown.Item>
           </DropdownButton>
       </Container>
     </Navbar>
