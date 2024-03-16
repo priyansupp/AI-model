@@ -2,14 +2,10 @@ import React from "react";
 import { useState } from "react"
 import OpenAI from 'openai';
 
-//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
-//gmail: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
 const CenterCont = () => {
     const openai = new OpenAI({
       apiKey: process.env.REACT_APP_OPENAI_API_KEY,
-      organization: "org-8BxBLES8yECWHNw0cfTEhzYJ",
-      // organization: "org-GWuUqffJqg2RilL1DsrRBvMa",
-      // apiKey: "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",
+      organization: process.env.REACT_APP_OPENAI_API_ORG,
       dangerouslyAllowBrowser: true
     });
   
