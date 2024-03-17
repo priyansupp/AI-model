@@ -8,34 +8,28 @@ import Register from './pages/register';
 import Login from './pages/login';
 import Profile from './pages/profile';
 import { CookiesProvider } from 'react-cookie';
-import { AuthContext } from './context/authContext';
-import { useState } from 'react';
 import Blogs from './pages/blogs';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState({});
   
   return (
-    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, user, setUser }}>
-      <CookiesProvider defaultSetOptions={{ path: '/' }}>
-        <div className="App">
-          <Header />
-          <BrowserRouter>
-            <Routes>
-              <Route index element={<Homepage />} />
-              <Route path='/models' element={<Models />} />
-              <Route path='/blogs' element={<Blogs />} />
-              <Route path='/register' element={<Register />} />
-              <Route path='/login' element={<Login />}/>
-              <Route path='/profile' element={<Profile />} />
-              <Route path='/newModel' element={<NewModelPage />} />
-              <Route path='/modelDesc' element={<ModelDesc />} />
-            </Routes>
-          </BrowserRouter>
-        </div>
-      </CookiesProvider>
-    </AuthContext.Provider>
+    <CookiesProvider defaultSetOptions={{ path: '/' }}>
+      <div className="App">
+        <Header />
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<Homepage />} />
+            <Route path='/models' element={<Models />} />
+            <Route path='/blogs' element={<Blogs/>} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/login' element={<Login />}/>
+            <Route path='/profile/:id' element={<Profile />} />
+            <Route path='/newModel' element={<NewModelPage />} />
+            <Route path='/modelDesc' element={<ModelDesc />} />
+          </Routes>s
+        </BrowserRouter>
+      </div>
+    </CookiesProvider>
   );
 }
 

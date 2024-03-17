@@ -7,6 +7,7 @@ import { AuthContext } from '../context/authContext';
 import axios from 'axios';
 
 function Header() {
+  // const navigator = useNavigate();
   const { setIsAuthenticated } = useContext(AuthContext);
 
   const handleLogout = (e) => {

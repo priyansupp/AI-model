@@ -5,6 +5,7 @@ import { useContext, useState } from 'react';
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
 import { AuthContext } from '../context/authContext';
+import { UserContext } from '../context/userContext';
 
 
 function Register() {
@@ -15,7 +16,8 @@ function Register() {
     const [username, setUsername] = useState('');
     const [name, setName] = useState('');
     const [_, setCookie] = useCookies(['userid']);
-    const { setIsAuthenticated, setUser } = useContext(AuthContext);
+    const { setIsAuthenticated } = useContext(AuthContext);
+    const { setUser } = useContext(UserContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();

@@ -19,7 +19,7 @@ function Profile() {
                     </div>
                 </Col>
                 <Col md={8} className={styles['right-container']}>
-                    <card>
+                    <Card> 
                         <Card.Body>
                             <h3>Models</h3>
                             <div className={styles.modelSection}>
@@ -28,7 +28,8 @@ function Profile() {
                                 ))}
                             </div>
                         </Card.Body>
-                    </card>
+                     </Card>
+                    <div className={styles.gap}></div>
                     <Card>
                         <Card.Body>
                             <h3>Blogs</h3>
