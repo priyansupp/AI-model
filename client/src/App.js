@@ -26,7 +26,7 @@ function App() {
               <Route path='/models' element={<Models />} />
               <Route path='/register' element={<Register />} />
               <Route path='/login' element={<Login />}/>
-              <Route path='/profile/:id' element={<Profile />} />
+              <Route path='/profile' element={<Profile />} />
               <Route path='/newModel' element={<NewModelPage />} />
               <Route path='/modelDesc' element={<ModelDesc />} />
             </Routes>

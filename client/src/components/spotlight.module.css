@@ -1,7 +1,18 @@
-.spotlight {
-    background-color: black;
+.spotlight{
+    height: 'calc(100vh - 56px - 80px)' 
+}
+
+.heading {
+    background-color: whitesmoke;
     width: 100%;
     padding: 20px 0 20px 20px;
-    height: 80px;
+    height: auto;
+}
+
+.spotlightcontainer{
+    padding: 20px; 
+    background-color: white;
+    height: auto;
+    width: '100%';
 }
 

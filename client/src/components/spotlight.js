@@ -31,13 +31,11 @@ function Spotlight() {
     }, [clicked])
 
     return (
-        <div style={{height: 'calc(100vh - 56px - 80px)' }}>
-            <div className={styles.spotlight}>
-                Spotlight
-            </div>
+        <div className={styles.spotlight}>
+            <div className={styles.heading}> Spotlight</div>
             <Lists list={list} setTask={foo} setLibrary={foo} setClicked={setClicked} clicked={clicked}/>
 
-            <div style={{padding: '20px', backgroundColor: 'magenta', height: 'calc(100vh - 56px - 80px - 50px)', width: '100%'}}>
+            <div className={styles.spotlightcontainer}>
                 {docs && docs.map(doc => <ModelCard key={doc._id} clicked={clicked} doc={doc}/>)}
             </div>
         </div>

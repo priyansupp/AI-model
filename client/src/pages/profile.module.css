@@ -1,0 +1,21 @@
+.container {
+    height: 100vh;
+  }
+  
+  .row {
+    height: 100%;
+  }
+  
+  .left-container {
+    height: 100%;
+    overflow-y: auto;
+  }
+  
+  .right-container {
+    height: 100%;
+    overflow-y: auto;
+  }
+  .name{
+    font-weight: bold;
+    font-size: larger;
+  }
