@@ -31,6 +31,7 @@ function Profile() {
                             </div>
                         </Card.Body>
                     </Card>
+                    <div className={styles.gap}></div>
                     <Card>
                         <Card.Body>
                             <h3>Blogs</h3>

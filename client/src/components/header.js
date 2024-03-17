@@ -9,8 +9,10 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import { AuthContext } from '../context/authContext';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
+  // const navigator = useNavigate();
   const { setIsAuthenticated } = useContext(AuthContext);
 
   const handleLogout = (e) => {
@@ -51,15 +53,14 @@ function Header() {
             <Button variant="outline-success">Search</Button>
           </Form>
         </Navbar.Collapse>
-        <DropdownButton as={ButtonGroup}>
-            <Dropdown.Item eventKey="1">Username</Dropdown.Item>
-            <Dropdown.Item eventKey="2">+ New Model</Dropdown.Item>
-            <Dropdown.Item eventKey="3" active>
+        <DropdownButton title="Profile" as={ButtonGroup}>
+            <Dropdown.Item href='/newModel' eventKey="2">+ New Model</Dropdown.Item>
+            <Dropdown.Item href='/newBlog' eventKey="3">
               + New Blog
             </Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Item onClick={handleLogout} eventKey="4">Logout</Dropdown.Item>
-          </DropdownButton>
+        </DropdownButton>
       </Container>
     </Navbar>
   );

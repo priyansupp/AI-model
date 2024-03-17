@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import styles from './newModel.module.css';
 import axios from 'axios';
-import { AuthContext } from '../context/authContext';
+import { UserContext } from '../context/userContext';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/authContext';
 
 function NewModelPage() {
 
-  const { user } = useContext(AuthContext);
+  const { isAuthenticated } = useContext(AuthContext);
+  const { user } = useContext(UserContext);
   console.log(user.username);
+  console.log(`User is: ${isAuthenticated}`);
 
   const navigator = useNavigate();
   const [modelName, setModelName] = useState('');
@@ -28,7 +31,7 @@ function NewModelPage() {
       return;
     }
     const data = {
-      Userid: toString(user._id),
+      Userid: user._id,
       Modelname: modelName,
       Desc: modelDescription,
       Url: githubLink,
@@ -62,6 +65,7 @@ function NewModelPage() {
                     required
                   />
                 </div>
+                {/* { isAuthenticated ? <p>ha logged in hai</p> : <p>Nhi hai logged in</p> } */}
                 <div className='form-group'>
                   <label className= {styles['label']}>Model Name:</label>
                   <input

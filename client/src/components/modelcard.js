@@ -13,7 +13,7 @@ function ModelCard(props) {
     useEffect(() => {
         axios.get(`/api/profile/${doc.userid}`)
         .then(response => {
-            console.log(response.data);
+            // console.log(response.data);
             setUsername(response.data.username)
         })
         .catch(e => console.log(`Error: ${e}`));
