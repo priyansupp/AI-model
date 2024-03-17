@@ -1,27 +1,25 @@
 .modelsPage {
-    height: var(--maxH);
-    width: 100vw;
-    background-color: red;
+    height: auto;
+    width: auto;
 }
 
-
-.modelsPage > .cont {
+.container {
     display: flex;
     flex-direction: row;
     z-index: 1;
     margin: 0;
     padding: 0;
-    height: 100%; 
 }
 
-.cont > .left {
-    background-color: red;
-    flex: 30%;
+.sidebar {
+    background-color: white;
+    flex: 20%;
 }
 
-.cont > .center {
-    background-color: black;
-    flex: 70%;
+.display {
+    background-color: #198754;
+    flex: 80%;
+    height: 500px;
 }
   
   

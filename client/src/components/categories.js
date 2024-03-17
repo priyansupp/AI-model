@@ -1,7 +1,7 @@
 import React from "react";
 import Lists from "./lists";
 import Category from "./category";
-import styles from './categories.module.css';
+import styles from './categoriesHolder.module.css';
 import { useState } from "react";
 
 
@@ -14,7 +14,7 @@ function Categories(props) {
     const { setTask, setLibrary } = props;
     const [clicked, setClicked] = useState(0);
     const list = [
-        {name: 'Tasks', id: 0},
+        {name: 'Category', id: 0},
         {name: 'Libraries', id: 1}
     ];
     return (
@@ -23,11 +23,11 @@ function Categories(props) {
             {
                 clicked
                 ?
-                <div>
+                <div className={styles.category}>
                     {libraries.map((cat) => <Category clicked={1} setTask={setTask} setLibrary={setLibrary} name={cat.name} key={cat.id} />)}
                 </div>
                 :
-                <div>
+                <div className={styles.library}>
                     {tasks.map((cat) => <Category clicked={0} setTask={setTask} setLibrary={setLibrary} name={cat.name} key={cat.id} />)}
                 </div>
             }
