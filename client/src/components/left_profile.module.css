@@ -46,6 +46,10 @@
     cursor: pointer;
 }
 
+.left_options_link {
+    text-decoration: none;
+}
+
 .left_options:hover {
     text-decoration: underline;
 }

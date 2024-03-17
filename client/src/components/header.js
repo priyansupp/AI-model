@@ -7,13 +7,9 @@ import Navbar from 'react-bootstrap/Navbar';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import { AuthContext } from '../context/authContext';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
 function Header() {
-  // const navigator = useNavigate();
-  const { setIsAuthenticated } = useContext(AuthContext);
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -26,7 +22,6 @@ function Header() {
     });
     // removeCookie('userid');
     // removeCookie('token');
-    setIsAuthenticated(false);
   }
 
   return (

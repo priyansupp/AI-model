@@ -6,11 +6,8 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 function LeftProfile() {
 
-    const [cookie, _] = useCookies(['userid']);
+    const [cookie, _] = useCookies();
     const path = `/profile/${cookie.userid}`;
-    // console.log(cookie.userid);
-    
-
 
     return (
         <div className={styles.leftcontainer}>
@@ -27,8 +24,8 @@ function LeftProfile() {
                 </Dropdown>
             </div>
             <div className={styles.content}>
-                <span className={styles.username}>Username</span>
-                <Link to={path}><span className={styles.left_options}>Profile</span></Link>
+                <span className={styles.username}>{cookie.username}</span>
+                <Link className={styles.left_options_link} to={path}><span className={styles.left_options}>Profile</span></Link>
             </div>
         </div>
     );

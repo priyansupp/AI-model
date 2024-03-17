@@ -4,17 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { AuthContextProvider } from './context/authContext';
+import { AuthProvider } from './context/authContext';
 import { UserContextProvider } from './context/userContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-  <AuthContextProvider>
-    <UserContextProvider>
+  // <AuthProvider>
+  //   <UserContextProvider>
       <App />
-    </UserContextProvider>
-  </AuthContextProvider>
+    // </UserContextProvider>
+  // </AuthProvider>
   // </React.StrictMode>
 );
 

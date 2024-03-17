@@ -1,17 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styles from './newModel.module.css';
 import axios from 'axios';
-import { UserContext } from '../context/userContext';
-import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/authContext';
+import { useCookies } from 'react-cookie';
 
 function NewModelPage() {
-
-  const { isAuthenticated } = useContext(AuthContext);
-  const { user } = useContext(UserContext);
-  console.log(user.username);
-  console.log(`User is: ${isAuthenticated}`);
 
   const navigator = useNavigate();
   const [modelName, setModelName] = useState('');
@@ -20,6 +13,10 @@ function NewModelPage() {
   const [githubLink, setGithubLink] = useState('');
   const [modelDescription, setModelDescription] = useState('');
   const [validationError, setValidationError] = useState('');
+
+  const [cookie, _] = useCookies();
+
+  // console.log(cookie);
 
 
   const handleSubmit = (e) => {
@@ -31,7 +28,7 @@ function NewModelPage() {
       return;
     }
     const data = {
-      Userid: user._id,
+      Userid: cookie.userid,
       Modelname: modelName,
       Desc: modelDescription,
       Url: githubLink,
@@ -40,7 +37,7 @@ function NewModelPage() {
     }
     axios.post('/models', data)
     .then(response => {
-      console.log(response.data.success);
+      // console.log(response.data.success);
       navigator('/');
     })
     .catch(e => {
@@ -61,7 +58,8 @@ function NewModelPage() {
                   <input
                     type='text'
                     className='form-control'
-                    value={user.username}
+                    value={cookie.username}
+                    readOnly={true}
                     required
                   />
                 </div>
