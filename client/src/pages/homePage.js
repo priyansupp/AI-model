@@ -7,7 +7,6 @@ import Spotlight from '../components/spotlight';
 function Homepage() {
   return (
     <div className='homepage'>
-      <div className='cont'>
         <div className='left'>
           <LeftProfile />
         </div>
@@ -18,7 +17,6 @@ function Homepage() {
           <Spotlight />
         </div>
       </div>
-    </div>
   );
 }
 

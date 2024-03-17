@@ -27,46 +27,47 @@ function ModelCard(props) {
 
     if(props.clicked) {
         return (
-            <div className={styles.model}>
-                <div className={styles.model_grid}>
+        <div className={styles.model}>
+                <div className= {styles.header}>
                     <div className={styles.model_logo}>
                         <img src={logo}/>
                     </div>
                     <div className={styles.details}>
                         <div><Link to={path}>{username}</Link> / {doc.title}</div>
-                        <ul>
-                            <li>Likes: {doc.likes}</li>
-                        </ul>
-                    </div>
-                </div>
-                <div className={styles.desc}>
-                    <p>{doc.content}</p>
-                </div>
-            </div>
+                            <div>{doc.category}</div>
+                            </div>
+                            </div>
+                            <div className={styles.modelcontent}>
+                            <div>Likes: {doc.likes}</div>
+                            <div className={styles.desc}>
+                                 <p>{doc.content}</p>
+                            </div>
+                            </div>
+                     </div>
         );
     } else {
         return (
             <div className={styles.model}>
-                <div className={styles.model_grid}>
+                <div className= {styles.header}>
                     <div className={styles.model_logo}>
                         <img src={logo}/>
                     </div>
                     <div className={styles.details}>
                         <div><Link to={path}>{username}</Link> / {doc.modelname}</div>
-                        <ul>
-                            <li>{doc.category}</li>
-                            <li>Likes: {doc.likes}</li>
-                            <li className={styles.rating_stars}>
+                            <div>{doc.category}</div>
+                            </div>
+                            </div>
+                            <div className={styles.modelcontent}>
+                            <div>Likes: {doc.likes}</div>
+                            <div className={styles.rating_stars}>
                                 <span>Rating: </span>
                                 <span className="rating-stars">{rating}</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div className={styles.desc}>
-                    <p>{doc.desc}</p>
-                </div>
-            </div>
+                            </div>
+                            <div className={styles.desc}>
+                                 <p>{doc.desc}</p>
+                            </div>
+                            </div>
+                     </div>
         );
     }
 }

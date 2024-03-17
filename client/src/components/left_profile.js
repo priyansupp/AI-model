@@ -13,11 +13,11 @@ function LeftProfile() {
 
 
     return (
-        <div style={{height: 'calc(100vh - 56px - 80px)' }}>
-            <div className={styles.left_new_btn}>
+        <div className={styles.leftcontainer}>
+            <div className={styles.header}>
                 <Dropdown>
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                        New
+                    <Dropdown.Toggle  className={styles.dropdown} id="dropdown-basic">
+                        Create
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
@@ -26,7 +26,7 @@ function LeftProfile() {
                     </Dropdown.Menu>
                 </Dropdown>
             </div>
-            <div className={styles.left_align}>
+            <div className={styles.content}>
                 <span className={styles.username}>Username</span>
                 <Link to={path}><span className={styles.left_options}>Profile</span></Link>
             </div>
