@@ -1,20 +1,31 @@
-.left_align {
-    background-color: green;
-    width: 100%;
+.content {
+    background-color: whitesmoke;
     padding: 20px 0 20px 20px;
     height: 100%;
 }
+.leftcontainer{
+    height: 'calc(100vh - 56px - 80px)';
+}
 
+.header {
+    background-color: whitesmoke;
+    height: 50px;
+}
 
-.left_new_btn {
-    background-color: black;
-    width: 100%;
-    padding: 20px 0 20px 20px;
-    height: 80px;
+.dropdown{
+    background-color: burlywood;
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: large;
+}
+
+.dropdown:hover {
+    background-color: wheat;
+    cursor: pointer;
 }
 
 
-.left_align > span {
+.content > span {
     display: block;
 }
 
