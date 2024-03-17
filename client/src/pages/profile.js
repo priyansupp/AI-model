@@ -13,15 +13,13 @@ function Profile() {
         <Container fluid className={styles.container}>
             <Row className={styles.row}>
                 <Col md={4} className={styles['left-container']}>
-                <Card>
-                        <Card.Body>
-                            <h3>Riya Shishodia</h3>
-                            <img src="default_profile_pic.jpg" alt="Profile" className="img-fluid" />
-                        </Card.Body>
-                    </Card>
+                    <div className={styles.name}>Riya Shishodia</div>
+                    <div className={styles.picture}>
+                    <img src="default_profile_pic.jpg" alt="Profile" className="img-fluid" />
+                    </div>
                 </Col>
                 <Col md={8} className={styles['right-container']}>
-                    <Card>
+                    <card>
                         <Card.Body>
                             <h3>Models</h3>
                             <div className={styles.modelSection}>
@@ -30,7 +28,7 @@ function Profile() {
                                 ))}
                             </div>
                         </Card.Body>
-                    </Card>
+                    </card>
                     <Card>
                         <Card.Body>
                             <h3>Blogs</h3>

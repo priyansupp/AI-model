@@ -1,10 +1,10 @@
 import React from "react";
 import styles from './models.module.css';
 import Categories from "../components/categories";
-import RightModels from "../components/rightmodels";
+import RightBlogs from "../components/rightBlogs";
 import { useState } from "react";
 
-function Models() {
+function Blogs() {
     const [task, setTask] = useState('');
     const [library, setLibrary] = useState('');
 
@@ -15,11 +15,11 @@ function Models() {
                     <Categories setTask={setTask} setLibrary={setLibrary} />
                 </div>
                 <div className={styles.display}>
-                    <RightModels task={task} library={library} />
+                    <RightBlogs task={task} library={library} />
                 </div>
             </div>
         </div>
     );
 }
 
-export default Models;
+export default Blogs;

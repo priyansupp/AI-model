@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react"
 import OpenAI from 'openai';
+import styles from './center.module.css'
 
 const CenterCont = () => {
     const openai = new OpenAI({
@@ -39,14 +40,7 @@ const CenterCont = () => {
   
     return (
       <>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: '100vh',
-          }}
-        >
+        <div className={styles.container}>
           <form onSubmit={handleSubmit}>
             <textarea
               type="text"

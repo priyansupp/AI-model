@@ -10,6 +10,7 @@ import Profile from './pages/profile';
 import { CookiesProvider } from 'react-cookie';
 import { AuthContext } from './context/authContext';
 import { useState } from 'react';
+import Blogs from './pages/blogs';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -24,6 +25,7 @@ function App() {
             <Routes>
               <Route index element={<Homepage />} />
               <Route path='/models' element={<Models />} />
+              <Route path='/blogs' element={<Blogs />} />
               <Route path='/register' element={<Register />} />
               <Route path='/login' element={<Login />}/>
               <Route path='/profile' element={<Profile />} />
