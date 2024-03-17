@@ -1,10 +1,11 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link,useNavigate } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
 import { AuthContext } from '../context/authContext';
+import { UserContext } from '../context/userContext';
 
 function Login() {
 
@@ -13,11 +14,12 @@ function Login() {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [_, setCookie] = useCookies(['userid']);
-    const { setIsAuthenticated, setUser } = useContext(AuthContext);
+    const { setIsAuthenticated } = useContext(AuthContext);
+    const { dispatch, user } = useContext(UserContext);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        axios.post('/auth/login', {
+        await axios.post('/auth/login', {
             email: email,
             password: pass
         }).then((response) => {
@@ -26,12 +28,11 @@ function Login() {
             const user2 = {
                 email: user1.email,
                 username: user1.username,
-                userid: toString(user1._id),
+                userid: user1._id,
                 name: user1.name
             }
-            // console.log(user2);
-            setUser(user2);
-            setCookie('userid', toString(response.data.user._id), {path: '/'});
+            dispatch({type: 'setUser', user: user2});
+            setCookie('userid', response.data.user._id, {path: '/'});
             setIsAuthenticated(true);
             navigate('/');
         }).catch(e => {

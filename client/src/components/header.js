@@ -51,7 +51,7 @@ function Header() {
             <Button variant="outline-success">Search</Button>
           </Form>
         </Navbar.Collapse>
-        <DropdownButton as={ButtonGroup}>
+        <DropdownButton title="Profile" as={ButtonGroup}>
             <Dropdown.Item eventKey="1">Username</Dropdown.Item>
             <Dropdown.Item eventKey="2">+ New Model</Dropdown.Item>
             <Dropdown.Item eventKey="3" active>
@@ -59,7 +59,7 @@ function Header() {
             </Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Item onClick={handleLogout} eventKey="4">Logout</Dropdown.Item>
-          </DropdownButton>
+        </DropdownButton>
       </Container>
     </Navbar>
   );
