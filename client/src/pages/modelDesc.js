@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import styles from './modelDesc.module.css'
 import TextEditor from '../components/quilleditor';
 
+
 function ModelDesc({ modelName, modelDescription, modelCode }) {
+  const [likes, setLikes] = useState(0);
+  const [liked, setLiked] = useState(false);
   return (
     <div className ={styles.container}>
     <div className={styles.header}>
@@ -14,7 +17,7 @@ function ModelDesc({ modelName, modelDescription, modelCode }) {
       </div>
       <div className={styles.column}>
         <div className={styles.tabs}>
-            <Tabs defaultActiveKey="column" id="model-tabs" className="mb-3">
+            <Tabs defaultActiveKey="description" id="model-tabs" className="mb-3">
               <Tab eventKey="description" title="Description">
                <div className={styles.desc}>
                 <p>hi my name is riya. this is my model.
@@ -39,7 +42,22 @@ function ModelDesc({ modelName, modelDescription, modelCode }) {
               </dt>
               <dd class="font-semibold">10,765</dd>
             </dl>
-            <div class="divider-column-vertical"></div>
+            <div className={styles.divider}></div>
+            <div className={styles.button} >Category</div>
+            <div className={styles.divider}></div>
+            <div className={styles.button} >Library</div>
+            <div className={styles.divider}></div>
+            <div className={styles.bcontainer}>
+            <button
+              className={styles.like}
+              onClick={() => {
+                setLikes(likes + 1);
+                setLiked(true);
+              }}
+              >
+              {likes} Likes
+            </button>
+              </div>
           </div>
         </section>
         </div>
