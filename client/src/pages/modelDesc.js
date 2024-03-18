@@ -33,7 +33,8 @@ function ModelDesc() {
   }, [id]);
 
   const path = `/profile/${user._id}`;
-
+  const [likes, setLikes] = useState(0);
+  const [liked, setLiked] = useState(false);
   return (
     <div className ={styles.container}>
     <div className={styles.header}>
@@ -43,7 +44,7 @@ function ModelDesc() {
       </div>
       <div className={styles.column}>
         <div className={styles.tabs}>
-            <Tabs defaultActiveKey="column" id="model-tabs" className="mb-3">
+            <Tabs defaultActiveKey="description" id="model-tabs" className="mb-3">
               <Tab eventKey="description" title="Description">
                <div className={styles.desc}>
                 <p>
@@ -67,7 +68,22 @@ function ModelDesc() {
               </dt>
               <dd class="font-semibold">10,765</dd>
             </dl>
-            <div class="divider-column-vertical"></div>
+            <div className={styles.divider}></div>
+            <div className={styles.button} >{model.category}</div>
+            <div className={styles.divider}></div>
+            <div className={styles.button} >{model.library}</div>
+            <div className={styles.divider}></div>
+            <div className={styles.bcontainer}>
+            <button
+              className={styles.like}
+              onClick={() => {
+                setLikes(likes + 1);
+                setLiked(true);
+              }}
+              >
+              {model.likes} Likes
+            </button>
+              </div>
           </div>
         </section>
         </div>
