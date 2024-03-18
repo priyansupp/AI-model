@@ -6,7 +6,7 @@ import { useState } from "react";
 
 
 
-const tasks = ['Text to Image', 'Sentiment Analysis', 'Image Classification', 'Summarization', 'Translation', 'Voice Activity Detection', 'Reinforcement Learning', 'Robotics', 'Video Classification', 'Feature Extraction', 'Object Detection', 'Sentiment Analysis', 'GLOW Model'];
+const tasks = ['All', 'Text to Image', 'Sentiment Analysis', 'Image Classification', 'Summarization', 'Translation', 'Voice Activity Detection', 'Reinforcement Learning', 'Robotics', 'Video Classification', 'Feature Extraction', 'Object Detection', 'Sentiment Analysis', 'GLOW Model'];
 let taskObject = [];
 let x = 1;
 for(let i = 0; i < tasks.length; i++) {
@@ -16,7 +16,7 @@ for(let i = 0; i < tasks.length; i++) {
   });
 }
 
-const libraries = ['Pytorch', 'Tensorflow', 'Keras', 'Transformers', 'NeMo', 'OpenCLIP', 'Rust', 'spaCy', 'paddlenlp', 'Diffusers', 'fastText'];
+const libraries = ['All', 'Pytorch', 'Tensorflow', 'Keras', 'Transformers', 'NeMo', 'OpenCLIP', 'Rust', 'spaCy', 'paddlenlp', 'Diffusers', 'fastText'];
 let libObject = [];
 x = 1;
 for(let i = 0; i < libraries.length; i++) {

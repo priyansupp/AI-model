@@ -1,25 +1,53 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import styles from './modelDesc.module.css'
 import TextEditor from '../components/quilleditor';
+import { Link, useLocation } from "react-router-dom";
+import axios from 'axios';
 
-function ModelDesc({ modelName, modelDescription, modelCode }) {
+
+function ModelDesc() {
+
+  const location = useLocation();
+  const id = location.pathname.split('/')[2];
+
+  const [user, setUser] = useState({});
+  const [model, setModel] = useState({});
+
+  useEffect(() => {
+    axios.get(`/api/models/${id}`)
+    .then(response => {
+      setModel(response.data);
+      axios.get(`/api/profile/${response.data.userid}`)
+      .then(res2 => {
+        setUser(res2.data);
+      })
+      .catch(e => {
+        console.log(`Error in fetching user: ${e}`);
+      })
+    })
+    .catch(e => {
+      console.log(`Error in fetching model: ${e}`);
+    });
+  }, [id]);
+
+  const path = `/profile/${user._id}`;
+
   return (
     <div className ={styles.container}>
     <div className={styles.header}>
-      <span>username</span>
+      <Link to={path}><span>{user.username}</span></Link>
       <span>/</span>
-      <span>modelname</span>
+      <span>{model.modelname}</span>
       </div>
       <div className={styles.column}>
         <div className={styles.tabs}>
             <Tabs defaultActiveKey="column" id="model-tabs" className="mb-3">
               <Tab eventKey="description" title="Description">
                <div className={styles.desc}>
-                <p>hi my name is riya. this is my model.
-                  i hope you like it.llllllllllllllllllllllllllllllllllllllllllllllllllllllllldsefs csjdcbdshcbdscjds
-                  dsedsjefbrjhbf rmfn ksdjNC kj
+                <p>
+                  {model.desc}
                 </p>
                </div>
               </Tab>

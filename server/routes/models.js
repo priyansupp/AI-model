@@ -3,7 +3,7 @@ const AIModel = require('../models/aimodel');
 const { requireLoggedIn } = require('../middleware/auth_middleware');
 
 // GET all models created by a particular user
-router.get('/profile/:id', requireLoggedIn, async (req, res) => {
+router.get('/profile/:id', async (req, res) => {
     await AIModel.find({ userid: req.params.id })
     .then((docs) => {
         // console.log(`The following docs are retrieved: ${docs}`);

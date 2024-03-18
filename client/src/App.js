@@ -25,7 +25,7 @@ function App() {
             <Route path='/login' element={<Login />}/>
             <Route path='/profile/:id' element={<Profile />} />
             <Route path='/newModel' element={<NewModelPage />} />
-            <Route path='/modelDesc' element={<ModelDesc />} />
+            <Route path='/modelDesc/:id' element={<ModelDesc />} />
           </Routes>
         </BrowserRouter>
       </div>
