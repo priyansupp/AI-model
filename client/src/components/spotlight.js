@@ -23,7 +23,9 @@ function Spotlight() {
         const url = (clicked ? '/api/blogs' : '/api/models');
         axios.get(url)
         .then((response) => {
-            setDocs(response.data);
+            setDocs(response.data.filter(doc => {
+                if(doc.likes >= 5) return true;
+            }));
         })
         .catch(e => {
             console.log(`Error : ${e}`);

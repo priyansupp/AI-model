@@ -3,7 +3,20 @@ const BlogModel = require('../models/blogs.js');
 const { requireLoggedIn } = require('../middleware/auth_middleware');
 
 
-
+// GET all blogs created by a particular user
+router.get('/profile/:id', async (req, res) => {
+    await BlogModel.find({ userid: req.params.id })
+    .then((docs) => {
+        // console.log(`The following docs are retrieved: ${docs}`);
+        res.send(docs);
+    })
+    .catch(err => {
+        // console.log(`Blogs could not be fetched. Error: ${err}`);
+        res.send({
+            error: "Blogs could not be fetched."
+        });
+    });
+})
 
 // GET all blogs
 router.get('/', async (req, res) => {

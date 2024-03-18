@@ -1,18 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './newModel.module.css';
 import axios from 'axios';
-import { UserContext } from '../context/userContext';
-import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/authContext';
+import { useCookies } from 'react-cookie';
+
+
+const libraries = ['Pytorch', 'Tensorflow', 'Keras', 'Transformers', 'NeMo', 'OpenCLIP', 'Rust', 'spaCy', 'paddlenlp', 'Diffusers', 'fastText'];
+let libObject = [];
+let x = 1;
+for(let i = 0; i < libraries.length; i++) {
+  libObject.push({
+    name: libraries[i],
+    id: x++
+  });
+}
+
+const categories = ['Text to Image', 'Sentiment Analysis', 'Image Classification', 'Summarization', 'Translation', 'Voice Activity Detection', 'Reinforcement Learning', 'Robotics', 'Video Classification', 'Feature Extraction', 'Object Detection', 'Sentiment Analysis', 'GLOW Model'];
+let catObject = [];
+x = 1;
+for(let i = 0; i < categories.length; i++) {
+  catObject.push({
+    name: categories[i],
+    id: x++
+  });
+}
+
 
 function NewModelPage() {
-
-  const { isAuthenticated } = useContext(AuthContext);
-  const { user } = useContext(UserContext);
-  console.log(user.username);
-  console.log(`User is: ${isAuthenticated}`);
-
+  
   const navigator = useNavigate();
   const [modelName, setModelName] = useState('');
   const [category, setCategory] = useState('');
@@ -20,6 +35,8 @@ function NewModelPage() {
   const [githubLink, setGithubLink] = useState('');
   const [modelDescription, setModelDescription] = useState('');
   const [validationError, setValidationError] = useState('');
+  
+  const [cookie, _] = useCookies();
 
 
   const handleSubmit = (e) => {
@@ -31,7 +48,7 @@ function NewModelPage() {
       return;
     }
     const data = {
-      Userid: user._id,
+      Userid: cookie.userid,
       Modelname: modelName,
       Desc: modelDescription,
       Url: githubLink,
@@ -40,7 +57,7 @@ function NewModelPage() {
     }
     axios.post('/models', data)
     .then(response => {
-      console.log(response.data.success);
+      // console.log(response.data.success);
       navigator('/');
     })
     .catch(e => {
@@ -61,7 +78,8 @@ function NewModelPage() {
                   <input
                     type='text'
                     className='form-control'
-                    value={user.username}
+                    value={cookie.username}
+                    readOnly={true}
                     required
                   />
                 </div>
@@ -83,12 +101,11 @@ function NewModelPage() {
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                     required
-                  >
+                    >
                     <option value=''>Select Category</option>
-                    <option value='A'>A</option>
-                    <option value='B'>B</option>
-                    <option value='C'>C</option>
-                    <option value='D'>D</option>
+                    {
+                      catObject.map(cat => <option key={cat.id} value={cat.name}>{cat.name}</option>)
+                    }
                   </select>
                 </div>
                 <div className='form-group'>
@@ -100,10 +117,9 @@ function NewModelPage() {
                     required
                   >
                     <option value=''>Select Library</option>
-                    <option value='A'>A</option>
-                    <option value='B'>B</option>
-                    <option value='C'>C</option>
-                    <option value='D'>D</option>
+                    {
+                      libObject.map(lib => <option key={lib.id} value={lib.name}>{lib.name}</option>)
+                    }
                   </select>
                 </div>
                 <div className='form-group'>
@@ -126,7 +142,7 @@ function NewModelPage() {
                   />
                 </div>
                 <div className='form-group text-center'>
-                  <button type='submit' className="btn btn-primary">Create Model</button>
+                  <button type='submit' className="btn btn-success">Create Model</button>
                 </div>
                 {validationError && (
                   <div className='alert alert-danger'>{validationError}</div>

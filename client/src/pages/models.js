@@ -5,8 +5,8 @@ import RightModels from "../components/rightmodels";
 import { useState } from "react";
 
 function Models() {
-    const [task, setTask] = useState('');
-    const [library, setLibrary] = useState('');
+    const [task, setTask] = useState('All');
+    const [library, setLibrary] = useState('All');
 
     return (
         <div className={styles.modelsPage}>

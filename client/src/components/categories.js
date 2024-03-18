@@ -6,8 +6,26 @@ import { useState } from "react";
 
 
 
-const tasks = [{name:'All', id:0}, {name:'Text to Image', id:1}, {name:'Sentiment Analysis', id:2}, {name:'Generative AI model', id:3}];
-const libraries = [{name:'All', id:0}, {name:'Pytorch', id:1}, {name:'Pandas', id:2}, {name:'Numpy', id:3}, {name:'Tensorflow', id:4}, {name:'Keras', id:5}, {name:'Sci-py', id:6}];
+const tasks = ['All', 'Text to Image', 'Sentiment Analysis', 'Image Classification', 'Summarization', 'Translation', 'Voice Activity Detection', 'Reinforcement Learning', 'Robotics', 'Video Classification', 'Feature Extraction', 'Object Detection', 'Sentiment Analysis', 'GLOW Model'];
+let taskObject = [];
+let x = 1;
+for(let i = 0; i < tasks.length; i++) {
+    taskObject.push({
+    name: tasks[i],
+    id: x++
+  });
+}
+
+const libraries = ['All', 'Pytorch', 'Tensorflow', 'Keras', 'Transformers', 'NeMo', 'OpenCLIP', 'Rust', 'spaCy', 'paddlenlp', 'Diffusers', 'fastText'];
+let libObject = [];
+x = 1;
+for(let i = 0; i < libraries.length; i++) {
+  libObject.push({
+    name: libraries[i],
+    id: x++
+  });
+}
+
 
 function Categories(props) {
 
@@ -24,11 +42,11 @@ function Categories(props) {
                 clicked
                 ?
                 <div className={styles.category}>
-                    {libraries.map((cat) => <Category clicked={1} setTask={setTask} setLibrary={setLibrary} name={cat.name} key={cat.id} />)}
+                    {libObject.map((cat) => <Category clicked={1} setTask={setTask} setLibrary={setLibrary} name={cat.name} key={cat.id} />)}
                 </div>
                 :
                 <div className={styles.library}>
-                    {tasks.map((cat) => <Category clicked={0} setTask={setTask} setLibrary={setLibrary} name={cat.name} key={cat.id} />)}
+                    {taskObject.map((cat) => <Category clicked={0} setTask={setTask} setLibrary={setLibrary} name={cat.name} key={cat.id} />)}
                 </div>
             }
         </div>
