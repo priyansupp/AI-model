@@ -5,12 +5,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 
-function RightModels(props) {
+function RightBlogs(props) {
 
     const { task, library } = props;
     const [docs, setDocs] = useState([]);
     useEffect(() => {
-        axios.get('/api/models')
+        axios.get('/api/blogs')
         .then((response) => {
             const data = response.data;
             const res1 = data.filter(x => {
@@ -29,7 +29,7 @@ function RightModels(props) {
     return (
         <div classname={styles.modelcontainer}>
             <div className={styles.heading}>
-                Models
+                Blogs
             </div>
 
             <div className= {styles.display}>
@@ -40,4 +40,4 @@ function RightModels(props) {
 }
 
 
-export default RightModels;
+export default RightBlogs;

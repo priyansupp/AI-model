@@ -1,11 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './newModel.module.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 
-function NewModelPage() {
 
+const libraries = ['Pytorch', 'Tensorflow', 'Keras', 'Transformers', 'NeMo', 'OpenCLIP', 'Rust', 'spaCy', 'paddlenlp', 'Diffusers', 'fastText'];
+let libObject = [];
+let x = 1;
+for(let i = 0; i < libraries.length; i++) {
+  libObject.push({
+    name: libraries[i],
+    id: x++
+  });
+}
+
+const categories = ['Text to Image', 'Sentiment Analysis', 'Image Classification', 'Summarization', 'Translation', 'Voice Activity Detection', 'Reinforcement Learning', 'Robotics', 'Video Classification', 'Feature Extraction', 'Object Detection', 'Sentiment Analysis', 'GLOW Model'];
+let catObject = [];
+x = 1;
+for(let i = 0; i < categories.length; i++) {
+  catObject.push({
+    name: categories[i],
+    id: x++
+  });
+}
+
+
+function NewModelPage() {
+  
   const navigator = useNavigate();
   const [modelName, setModelName] = useState('');
   const [category, setCategory] = useState('');
@@ -13,10 +35,8 @@ function NewModelPage() {
   const [githubLink, setGithubLink] = useState('');
   const [modelDescription, setModelDescription] = useState('');
   const [validationError, setValidationError] = useState('');
-
+  
   const [cookie, _] = useCookies();
-
-  // console.log(cookie);
 
 
   const handleSubmit = (e) => {
@@ -81,12 +101,11 @@ function NewModelPage() {
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                     required
-                  >
+                    >
                     <option value=''>Select Category</option>
-                    <option value='A'>A</option>
-                    <option value='B'>B</option>
-                    <option value='C'>C</option>
-                    <option value='D'>D</option>
+                    {
+                      catObject.map(cat => <option key={cat.id} value={cat.name}>{cat.name}</option>)
+                    }
                   </select>
                 </div>
                 <div className='form-group'>
@@ -98,10 +117,9 @@ function NewModelPage() {
                     required
                   >
                     <option value=''>Select Library</option>
-                    <option value='A'>A</option>
-                    <option value='B'>B</option>
-                    <option value='C'>C</option>
-                    <option value='D'>D</option>
+                    {
+                      libObject.map(lib => <option key={lib.id} value={lib.name}>{lib.name}</option>)
+                    }
                   </select>
                 </div>
                 <div className='form-group'>
@@ -124,7 +142,7 @@ function NewModelPage() {
                   />
                 </div>
                 <div className='form-group text-center'>
-                  <button type='submit' className="btn btn-primary">Create Model</button>
+                  <button type='submit' className="btn btn-success">Create Model</button>
                 </div>
                 {validationError && (
                   <div className='alert alert-danger'>{validationError}</div>

@@ -1,31 +1,76 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styles from './left_profile.module.css';
 import { Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { Button } from 'react-bootstrap';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function LeftProfile() {
 
+    const navigator = useNavigate();
     const [cookie, _] = useCookies();
     const path = `/profile/${cookie.userid}`;
 
+    
+    const handleLogout = (e) => {
+        e.preventDefault();
+        axios.get('/auth/logout')
+        .then(() => {
+          console.log(`Logged out`);
+        })
+        .catch(e => {
+          console.log(`Error in logging out: ${e}`);
+        });
+        // removeCookie('userid');
+        // removeCookie('token');
+      }
+    
+      const handleLogin = (e) => {
+        navigator('/login');
+      }
+
     return (
         <div className={styles.leftcontainer}>
-            <div className={styles.header}>
-                <Dropdown>
-                    <Dropdown.Toggle  className={styles.dropdown} id="dropdown-basic">
-                        Create
-                    </Dropdown.Toggle>
+            {
+                cookie.authenticated
+                ?
+                <div className={styles.header}>
+                    <Dropdown>
+                        <Dropdown.Toggle className={styles.dropdown} variant= "success" id="dropdown-basic">
+                            Create
+                        </Dropdown.Toggle>
 
-                    <Dropdown.Menu>
-                        <Dropdown.Item href="/newModel">New Model</Dropdown.Item>
-                        <Dropdown.Item href="/newBlog">New Blog</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-            </div>
+                        <Dropdown.Menu>
+                            <Dropdown.Item href="/newModel">New Model</Dropdown.Item>
+                            <Dropdown.Item href="/newBlog">New Blog</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                </div>
+                :
+                <></>
+            }
             <div className={styles.content}>
-                <span className={styles.username}>{cookie.username}</span>
-                <Link className={styles.left_options_link} to={path}><span className={styles.left_options}>Profile</span></Link>
+                {
+                    cookie.authenticated
+                    ?
+                    <>
+                        <span className={styles.username}>{cookie.username}</span>
+                        <Link className={styles.left_options_link} to={path}><span className={styles.left_options}>Profile</span></Link>
+                    </>
+                    :
+                    <></>
+                }
+                <Button style={{ marginTop: '10px', marginRight: '20px' }} onClick={ cookie.authenticated ? handleLogout : handleLogin } eventKey="4" variant= "success">
+                    {
+                        cookie.authenticated
+                        ?
+                        <>Logout</>
+                        :
+                        <>Login</>
+                    }
+                </Button>
             </div>
         </div>
     );

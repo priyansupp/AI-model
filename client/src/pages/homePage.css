@@ -9,6 +9,7 @@
   margin: 0;
 }
  .left {
+  background-color: white;
   flex: 20%;
 }
 

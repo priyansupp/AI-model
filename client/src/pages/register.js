@@ -66,12 +66,12 @@ function Register() {
             <Form.Label>Confirm Password</Form.Label>
             <Form.Control type="password" placeholder="Confirm Password" />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="success" type="submit">
             Register
         </Button>
         <Form.Group className="mb-3">
             <Form.Label>Already have an account: </Form.Label>
-            <Link to='/login'><Button>Login</Button></Link>
+            <Link to='/login'><Button variant='success'>Login</Button></Link>
         </Form.Group>
         </Form>
     </div>

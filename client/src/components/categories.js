@@ -1,20 +1,38 @@
 import React from "react";
 import Lists from "./lists";
 import Category from "./category";
-import styles from './categories.module.css';
+import styles from './categoriesHolder.module.css';
 import { useState } from "react";
 
 
 
-const tasks = [{name:'All', id:0}, {name:'Text to Image', id:1}, {name:'Sentiment Analysis', id:2}, {name:'Generative AI model', id:3}];
-const libraries = [{name:'All', id:0}, {name:'Pytorch', id:1}, {name:'Pandas', id:2}, {name:'Numpy', id:3}, {name:'Tensorflow', id:4}, {name:'Keras', id:5}, {name:'Sci-py', id:6}];
+const tasks = ['Text to Image', 'Sentiment Analysis', 'Image Classification', 'Summarization', 'Translation', 'Voice Activity Detection', 'Reinforcement Learning', 'Robotics', 'Video Classification', 'Feature Extraction', 'Object Detection', 'Sentiment Analysis', 'GLOW Model'];
+let taskObject = [];
+let x = 1;
+for(let i = 0; i < tasks.length; i++) {
+    taskObject.push({
+    name: tasks[i],
+    id: x++
+  });
+}
+
+const libraries = ['Pytorch', 'Tensorflow', 'Keras', 'Transformers', 'NeMo', 'OpenCLIP', 'Rust', 'spaCy', 'paddlenlp', 'Diffusers', 'fastText'];
+let libObject = [];
+x = 1;
+for(let i = 0; i < libraries.length; i++) {
+  libObject.push({
+    name: libraries[i],
+    id: x++
+  });
+}
+
 
 function Categories(props) {
 
     const { setTask, setLibrary } = props;
     const [clicked, setClicked] = useState(0);
     const list = [
-        {name: 'Tasks', id: 0},
+        {name: 'Category', id: 0},
         {name: 'Libraries', id: 1}
     ];
     return (
@@ -23,12 +41,12 @@ function Categories(props) {
             {
                 clicked
                 ?
-                <div>
-                    {libraries.map((cat) => <Category clicked={1} setTask={setTask} setLibrary={setLibrary} name={cat.name} key={cat.id} />)}
+                <div className={styles.category}>
+                    {libObject.map((cat) => <Category clicked={1} setTask={setTask} setLibrary={setLibrary} name={cat.name} key={cat.id} />)}
                 </div>
                 :
-                <div>
-                    {tasks.map((cat) => <Category clicked={0} setTask={setTask} setLibrary={setLibrary} name={cat.name} key={cat.id} />)}
+                <div className={styles.library}>
+                    {taskObject.map((cat) => <Category clicked={0} setTask={setTask} setLibrary={setLibrary} name={cat.name} key={cat.id} />)}
                 </div>
             }
         </div>
