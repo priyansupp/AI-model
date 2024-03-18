@@ -1,21 +1,18 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link,useNavigate } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
-import { AuthContext } from '../context/authContext';
-import { UserContext } from '../context/userContext';
 
 function Login() {
 
     const navigate = useNavigate();
 
+
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [_, setCookie] = useCookies(['userid']);
-    const { setIsAuthenticated } = useContext(AuthContext);
-    const { dispatch, user } = useContext(UserContext);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -25,15 +22,11 @@ function Login() {
         }).then((response) => {
             const user1 = response.data.user;
             console.log(`User logged in: ${user1.username}`);
-            const user2 = {
-                email: user1.email,
-                username: user1.username,
-                userid: user1._id,
-                name: user1.name
-            }
-            dispatch({type: 'setUser', user: user2});
-            setCookie('userid', response.data.user._id, {path: '/'});
-            setIsAuthenticated(true);
+            setCookie('userid', user1._id, {path: '/'});
+            setCookie('email', user1.email, {path: '/'});
+            setCookie('username', user1.username, {path: '/'});
+            setCookie('name', user1.name, {path: '/'});
+            setCookie('authenticated', true, {path: '/'});
             navigate('/');
         }).catch(e => {
             console.log(`Error: ${e}`);
@@ -55,12 +48,12 @@ function Login() {
                 <Form.Label>Password</Form.Label>
                 <Form.Control onChange={(e) => setPass(e.target.value)} type="password" placeholder="Password" />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="success" type="submit">
                 Login
             </Button>
             <Form.Group className="mb-3">
                 <Form.Label>Do not have an account: </Form.Label>
-                <Link to='/register'><Button>Register</Button></Link>
+                <Link to='/register'><Button variant='success'>Register</Button></Link>
             </Form.Group>
             </Form>
         </div>

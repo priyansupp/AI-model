@@ -1,11 +1,9 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link, useNavigate } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
-import { AuthContext } from '../context/authContext';
-import { UserContext } from '../context/userContext';
 
 
 function Register() {
@@ -16,8 +14,6 @@ function Register() {
     const [username, setUsername] = useState('');
     const [name, setName] = useState('');
     const [_, setCookie] = useCookies(['userid']);
-    const { setIsAuthenticated } = useContext(AuthContext);
-    const { setUser } = useContext(UserContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -27,10 +23,13 @@ function Register() {
             username: username,
             name: name
         }).then((response) => {
-            console.log(`User logged in: ${response.data.user.username}`);
-            setUser(response.data.user);
-            setCookie('userid', toString(response.data.user._id ), {path: '/'});
-            setIsAuthenticated(true);
+            const user1 = response.data.user;
+            console.log(`User logged in: ${user1.username}`);
+            setCookie('userid', user1._id, {path: '/'});
+            setCookie('email', user1.email, {path: '/'});
+            setCookie('username', user1.username, {path: '/'});
+            setCookie('name', user1.name, {path: '/'});
+            setCookie('authenticated', true, {path: '/'});
             navigate('/');
         }).catch(e => {
             console.log(`Error: ${e}`);
@@ -67,12 +66,12 @@ function Register() {
             <Form.Label>Confirm Password</Form.Label>
             <Form.Control type="password" placeholder="Confirm Password" />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="success" type="submit">
             Register
         </Button>
         <Form.Group className="mb-3">
             <Form.Label>Already have an account: </Form.Label>
-            <Link to='/login'><Button>Login</Button></Link>
+            <Link to='/login'><Button variant='success'>Login</Button></Link>
         </Form.Group>
         </Form>
     </div>

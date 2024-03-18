@@ -40,6 +40,10 @@ router.post('/login', async (req, res) => {
 router.get('/logout', (req, res) => {
     res.clearCookie('token');
     res.clearCookie('userid');
+    res.clearCookie('authenticated');
+    res.clearCookie('email');
+    res.clearCookie('username');
+    res.clearCookie('name');
     res.redirect('/');
 })
 

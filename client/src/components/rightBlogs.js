@@ -33,7 +33,7 @@ function RightBlogs(props) {
             </div>
 
             <div className= {styles.display}>
-                {docs && docs.map(doc => <ModelCard key={doc._id} clicked={0} doc={doc}/>)}
+                {docs && docs.map(doc => <ModelCard key={doc._id} clicked={1} doc={doc}/>)}
             </div>
         </div>
     );
