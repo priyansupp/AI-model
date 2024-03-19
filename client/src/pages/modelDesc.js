@@ -87,21 +87,21 @@ function ModelDesc() {
             <div className={styles.divider}></div>
             <div className={styles.button} >{model.library}</div>
             <div className={styles.divider}></div>
-            <div className={styles.bcontainer}>
+            {/* <div className={styles.bcontainer}> */}
             <div
               className={styles.like}
               onClick={handleLike}>
               {model.likes ? model.likes.length : 0} Likes
             </div>
-            
+            <div className={styles.divider}></div>
             <div
-              className={styles.like}
+              className={styles.rate}
               >
               Rating: {model.rating}
             </div>
             <RatingComponent id={id} />
             </div>
-          </div>
+          {/* </div> */}
         </section>
         </div>
       </div>

@@ -37,9 +37,9 @@
 }
 .button{
     border: 1px solid #ccc;
-    border-radius: 10px;
-    width: 100px;
-    margin-left: 10px;
+    border-radius: 50px;
+    min-width: 100px;
+    margin: 10px;
     text-align: center;
     background-color: white;
 }
@@ -54,17 +54,33 @@
     align-items: center;
  }
  .like {
-    border: 1px solid #ccc;
     border-radius: 20px;
     font-size: 14px;
     font-weight: bold;
-    color: red;
+    width: 100px;
+    text-align: center;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-    padding: 5px 10px;
-    border: 2px solid black;
+    padding: 2px;
+    margin-left: 10px;
+    border: 1px solid black;
  }
  .like:hover {
     color: black;
     background-color: red;
+ }
+
+ .rate {
+    border-radius: 20px;
+    background-color: goldenrod;
+    font-size: 14px;
+    font-weight: bold;
+    width: 100px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    padding: 2px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border: 1px solid black;
  }

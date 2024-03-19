@@ -24,12 +24,20 @@
 }
 
 .username{
-    font-weight: bold;
-    font-family: 'Courier New', Courier, monospace;
+    font-family:'Times New Roman', Times, serif;
+    font-size: large;
+    background-color: #71c59e;
+    height: auto;
+    margin: 5px;
+    padding: 5px;
+    color: azure;
+    text-align: center;
+
 }
 
 .left_options{
     color: white;
+    margin-left: 5px;
 }
 .divider{
     border-top: 1px solid #ccc;
