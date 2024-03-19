@@ -24,7 +24,7 @@ function Spotlight() {
         axios.get(url)
         .then((response) => {
             setDocs(response.data.filter(doc => {
-                if(doc.likes >= 5) return true;
+                if(doc.likes.length >= 1) return true;
             }));
         })
         .catch(e => {

@@ -5,6 +5,8 @@ import styles from './modelDesc.module.css'
 import TextEditor from '../components/quilleditor';
 import { Link, useLocation } from "react-router-dom";
 import axios from 'axios';
+import { useCookies } from 'react-cookie';
+import RatingComponent from '../components/rating';
 
 
 function ModelDesc() {
@@ -14,6 +16,8 @@ function ModelDesc() {
 
   const [user, setUser] = useState({});
   const [model, setModel] = useState({});
+  const [likes, setLikes] = useState(0);
+  const [cookie, setCookie] = useCookies();
 
   useEffect(() => {
     axios.get(`/api/models/${id}`)
@@ -32,9 +36,19 @@ function ModelDesc() {
     });
   }, [id]);
 
+  const handleLike = async (e) => {
+    e.preventDefault();
+    await axios.patch(`/api/models/${id}`, {likedBy: cookie.userid})
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(e => {
+      console.log(`Error in fetching model: ${e}`);
+    });
+  }
+
   const path = `/profile/${user._id}`;
-  const [likes, setLikes] = useState(0);
-  const [liked, setLiked] = useState(false);
+  
   return (
     <div className ={styles.container}>
     <div className={styles.header}>
@@ -74,16 +88,19 @@ function ModelDesc() {
             <div className={styles.button} >{model.library}</div>
             <div className={styles.divider}></div>
             <div className={styles.bcontainer}>
-            <button
+            <div
               className={styles.like}
-              onClick={() => {
-                setLikes(likes + 1);
-                setLiked(true);
-              }}
+              onClick={handleLike}>
+              {model.likes ? model.likes.length : 0} Likes
+            </div>
+            
+            <div
+              className={styles.like}
               >
-              {model.likes} Likes
-            </button>
-              </div>
+              Rating: {model.rating}
+            </div>
+            <RatingComponent id={id} />
+            </div>
           </div>
         </section>
         </div>

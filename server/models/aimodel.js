@@ -20,8 +20,7 @@ const AIModelSchema = new Schema({
         default: 0
     },
     likes: {
-        type: Number,
-        default: 0
+        type: Array,
     },
     count: {
         type: Number,
@@ -33,12 +32,12 @@ const AIModelSchema = new Schema({
     },
     category: {
         type: String,
-        enum: ['Text to Image', 'Sentiment Analysis', 'Generative AI model'],
+        enum: ['Text to Image', 'Sentiment Analysis', 'Image Classification', 'Summarization', 'Translation', 'Voice Activity Detection', 'Reinforcement Learning', 'Robotics', 'Video Classification', 'Feature Extraction', 'Object Detection', 'Sentiment Analysis', 'GLOW Model'],
         default: 'Text to Image',
     },
     library: {
         type: String,
-        enum: ['Pytorch', 'Pandas', 'Numpy', 'Tensorflow', 'Keras', 'Sci-py'],
+        enum: ['Pytorch', 'Tensorflow', 'Keras', 'Transformers', 'NeMo', 'OpenCLIP', 'Rust', 'spaCy', 'paddlenlp', 'Diffusers', 'fastText'],
         default: 'Pytorch'
     }
 });
