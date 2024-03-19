@@ -2,8 +2,7 @@
   display: flex;
   flex-direction: row;
   z-index: 1;
-  height: 100%; 
-  height: var(--maxH);
+  height: auto; 
   width: 100%;
   padding: 0;
   margin: 0;
@@ -11,14 +10,17 @@
  .left {
   background-color: white;
   flex: 20%;
+  height: 520px;
 }
 
 .center {
   background-color: whitesmoke;
   flex: 40%;
+  height:520px;
 }
 
  .right {
   flex: 30%;
+  height: 520px;
 }
 

@@ -51,18 +51,20 @@ function LeftProfile() {
                 :
                 <></>
             }
+            <div className={styles.divider}></div>
             <div className={styles.content}>
                 {
                     cookie.authenticated
                     ?
                     <>
                         <span className={styles.username}>{cookie.username}</span>
-                        <Link className={styles.left_options_link} to={path}><span className={styles.left_options}>Profile</span></Link>
+                        <Link className={styles.left_options_link} to={path}><Button className={styles.left_options} variant="success">Visit Profile</Button></Link>
                     </>
                     :
                     <></>
                 }
-                <Button style={{ marginTop: '10px', marginRight: '20px' }} onClick={ cookie.authenticated ? handleLogout : handleLogin } eventKey="4" variant= "success">
+                <div className={styles.divider}></div>
+                <Button className={styles.button} onClick={ cookie.authenticated ? handleLogout : handleLogin } eventKey="4" variant= "success">
                     {
                         cookie.authenticated
                         ?
