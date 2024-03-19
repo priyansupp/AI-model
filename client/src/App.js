@@ -9,6 +9,7 @@ import Login from './pages/login';
 import Profile from './pages/profile';
 import { CookiesProvider } from 'react-cookie';
 import Blogs from './pages/blogs';
+import NewBlogPage from './pages/newBlog';
 
 function App() {
   
@@ -25,6 +26,7 @@ function App() {
             <Route path='/login' element={<Login />}/>
             <Route path='/profile/:id' element={<Profile />} />
             <Route path='/newModel' element={<NewModelPage />} />
+            <Route path='/newBlog' element={<NewBlogPage />} />
             <Route path='/modelDesc/:id' element={<ModelDesc />} />
           </Routes>
         </BrowserRouter>

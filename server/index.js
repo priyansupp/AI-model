@@ -18,7 +18,7 @@ const db = require('./db-config.js');
 
 
 // use the cors middleware 
-app.use(cors({ origin: true, methods: ['GET', 'POST', 'PUT', 'DELETE'], credentials: true }));
+app.use(cors({ origin: true, methods: ['GET', 'POST', 'PATCH', 'DELETE'], credentials: true }));
 console.log("Hello world!!");
 
 // use the body-parser middleware to parse JSON and URL-encoded data

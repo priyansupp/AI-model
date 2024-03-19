@@ -51,7 +51,13 @@ function LeftProfile() {
                 :
                 <></>
             }
-            <div className={styles.divider}></div>
+            {
+                cookie.authenticated
+                ?
+                <div className={styles.divider} />
+                :
+                <></>
+            }
             <div className={styles.content}>
                 {
                     cookie.authenticated
@@ -63,7 +69,15 @@ function LeftProfile() {
                     :
                     <></>
                 }
-                <div className={styles.divider}></div>
+            </div>
+                {
+                    cookie.authenticated
+                    ?
+                    <div className={styles.divider} />
+                    :
+                    <></>
+                }
+            <div className={styles.content}>
                 <Button className={styles.button} onClick={ cookie.authenticated ? handleLogout : handleLogin } eventKey="4" variant= "success">
                     {
                         cookie.authenticated

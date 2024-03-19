@@ -57,9 +57,6 @@ router.post('/', requireLoggedIn, async (req, res) => {
 
     const { Userid, Modelname, Desc, Url, Cat, Lib } = req.body;
 
-    // encode image
-    // const encodedImage = img.toString('base64');
-
     // store Document details
     const aimodel = new AIModel({
         userid: Userid,
@@ -85,16 +82,25 @@ router.post('/', requireLoggedIn, async (req, res) => {
     });
 });
 
-router.put('/:id', async (req, res) => {
-    const { likes, rating } = req.body;
+router.patch('/:id', requireLoggedIn, async (req, res) => {
+    const { likedBy, rating } = req.body;
     await AIModel.findById(req.params.id)
     .then(async doc => {
-        doc.likes= likes;
-        if(!rating) {
+        if(likedBy) {
+            if(doc.likes.includes(likedBy)) {
+                const index = doc.likes.indexOf(likedBy);
+                if (index > -1) { // only splice array when item is found
+                    doc.likes.splice(index, 1); // 2nd parameter means remove one item only
+                }
+            } else {
+                doc.likes.push(likedBy);
+            }
+        }
+        if(rating) {
             doc.rating = (doc.count * doc.rating + rating) / (doc.count + 1);
             doc.count += 1;
         }
-        await doc.save()
+        await doc.save() 
         .then(() => {
             // console.log('Successfully updated');
             res.send({
@@ -111,7 +117,7 @@ router.put('/:id', async (req, res) => {
     .catch(e => {
         // console.log(`Error: ${e}`);
         res.send({
-            error: "Could not find specified document"
+            error: `Could not find specified document: ${e}`
         });
     });
 })

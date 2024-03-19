@@ -26,7 +26,7 @@ for(let i = 0; i < categories.length; i++) {
 }
 
 
-function NewModelPage() {
+function NewBlogPage() {
   
   const navigator = useNavigate();
   const [modelName, setModelName] = useState('');
@@ -53,12 +53,12 @@ function NewModelPage() {
       Desc: modelDescription,
       Url: githubLink,
       Cat: category,
-      Lib: library  
+      Lib: library
     }
-    axios.post('/api/models', data)
+    axios.post('/api/blogs', data)
     .then(response => {
       // console.log(response.data.success);
-      alert('Model has been created');
+      console.log('Blog has been posted');
       navigator('/');
     })
     .catch(e => {
@@ -72,7 +72,7 @@ function NewModelPage() {
         <div className='col-md-6'>
           <div className='card'>
             <div className='card-body'>
-              <h2 className='card-title text-center'>Create a new model</h2>
+              <h2 className='card-title text-center'>Post a new blog</h2>
               <form onSubmit={handleSubmit}>
                 <div className='form-group'>
                   <label className= {styles.label}>User Name:</label>
@@ -86,7 +86,7 @@ function NewModelPage() {
                 </div>
                 {/* { isAuthenticated ? <p>ha logged in hai</p> : <p>Nhi hai logged in</p> } */}
                 <div className='form-group'>
-                  <label className= {styles['label']}>Model Name:</label>
+                  <label className= {styles['label']}>Blog Name:</label>
                   <input
                     type='text'
                     className='form-control'
@@ -110,31 +110,7 @@ function NewModelPage() {
                   </select>
                 </div>
                 <div className='form-group'>
-                  <label className= {styles['label']}>Library:</label>
-                  <select
-                    className='form-control'
-                    value={library}
-                    onChange={(e) => setLibrary(e.target.value)}
-                    required
-                  >
-                    <option value=''>Select Library</option>
-                    {
-                      libObject.map(lib => <option key={lib.id} value={lib.name}>{lib.name}</option>)
-                    }
-                  </select>
-                </div>
-                <div className='form-group'>
-                  <label className= {styles['label']}>Github Link:</label>
-                  <input
-                    type='text'
-                    className='form-control'
-                    value={githubLink}
-                    onChange={(e) => setGithubLink(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className='form-group'>
-                  <label className= {styles['label']}>Model Description:</label>
+                  <label className= {styles['label']}>Blog Description:</label>
                   <textarea
                     className='form-control'
                     value={modelDescription}
@@ -143,7 +119,7 @@ function NewModelPage() {
                   />
                 </div>
                 <div className='form-group text-center'>
-                  <button type='submit' className="btn btn-success">Create Model</button>
+                  <button type='submit' className="btn btn-success">Post Blog</button>
                 </div>
                 {validationError && (
                   <div className='alert alert-danger'>{validationError}</div>
@@ -157,4 +133,4 @@ function NewModelPage() {
   );
 }
 
-export default NewModelPage;
+export default NewBlogPage;

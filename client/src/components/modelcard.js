@@ -7,7 +7,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 function ModelCard(props) {
     const doc = props.doc;
-    console.log(doc);
     const path = `/profile/${doc.userid}`;
     const navigator = useNavigate();
 
@@ -65,7 +64,7 @@ function ModelCard(props) {
                     </div>
                 </div>
                 <div onClick={handleClick} className={styles.modelcontent}>
-                    <div>Likes: {doc.likes}</div>
+                    <div>Likes: {doc.likes.length}</div>
                     <div className={styles.rating_stars}>
                         <span>Rating: </span>
                         <span className="rating-stars">{rating}</span>
