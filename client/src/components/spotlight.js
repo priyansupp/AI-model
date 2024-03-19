@@ -25,6 +25,8 @@ function Spotlight() {
         .then((response) => {
             setDocs(response.data.filter(doc => {
                 if(doc.likes.length >= 1) return true;
+            }).sort((a, b) => {
+                return b.likes.length - a.likes.length;
             }));
         })
         .catch(e => {

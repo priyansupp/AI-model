@@ -22,7 +22,18 @@ function ModelDesc() {
   useEffect(() => {
     axios.get(`/api/models/${id}`)
     .then(response => {
+      setLikes(response.data.likes.length);
+    })
+    .catch(e => {
+      console.log(`Error in fetching modelll: ${e}`);
+    });
+  }, []);
+
+  useEffect(() => {
+    axios.get(`/api/models/${id}`)
+    .then(response => {
       setModel(response.data);
+      setLikes(response.data.likes.length);
       axios.get(`/api/profile/${response.data.userid}`)
       .then(res2 => {
         setUser(res2.data);
@@ -36,11 +47,11 @@ function ModelDesc() {
     });
   }, [id]);
 
-  const handleLike = async (e) => {
+  const handleLike = (e) => {
     e.preventDefault();
-    await axios.patch(`/api/models/${id}`, {likedBy: cookie.userid})
+    axios.patch(`/api/models/${id}`, {likedBy: cookie.userid})
     .then(response => {
-      console.log(response.data);
+      setLikes(response.data.model.likes.length);
     })
     .catch(e => {
       console.log(`Error in fetching model: ${e}`);
@@ -91,7 +102,7 @@ function ModelDesc() {
             <div
               className={styles.like}
               onClick={handleLike}>
-              {model.likes ? model.likes.length : 0} Likes
+              {likes} Likes
             </div>
             
             <div

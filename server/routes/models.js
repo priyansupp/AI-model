@@ -104,7 +104,8 @@ router.patch('/:id', requireLoggedIn, async (req, res) => {
         .then(() => {
             // console.log('Successfully updated');
             res.send({
-                success: "Successfully updated"
+                success: "Successfully updated",
+                model: doc
             });
         })
         .catch(e => {
