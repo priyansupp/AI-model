@@ -7,6 +7,7 @@ import { Link, useLocation } from "react-router-dom";
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
 import RatingComponent from '../components/rating';
+import { FaHeart } from 'react-icons/fa';
 
 
 function ModelDesc() {
@@ -63,7 +64,7 @@ function ModelDesc() {
   return (
     <div className ={styles.container}>
     <div className={styles.header}>
-      <Link to={path}><span>{user.username}</span></Link>
+      <Link to={path} style={{ color: 'white' }}><span>{user.username}</span></Link>
       <span>/</span>
       <span>{model.modelname}</span>
       </div>
@@ -102,7 +103,7 @@ function ModelDesc() {
             <div
               className={styles.like}
               onClick={handleLike}>
-              {likes} Likes
+              {likes} Likes <FaHeart />
             </div>
             <div className={styles.divider}></div>
             <div

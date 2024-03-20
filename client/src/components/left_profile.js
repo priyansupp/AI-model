@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import styles from './left_profile.module.css';
 import { Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
@@ -44,7 +44,7 @@ function LeftProfile() {
 
                         <Dropdown.Menu>
                             <Dropdown.Item href="/newModel">New Model</Dropdown.Item>
-                            <Dropdown.Item href="/newBlog">New Blog</Dropdown.Item>
+                            <Dropdown.Item href="/newQuery">Post Query</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>
@@ -58,16 +58,16 @@ function LeftProfile() {
                 :
                 <></>
             }
-                {
-                    cookie.authenticated
-                    ?
-                    <>
-                        <div className={styles.username}>{cookie.username}</div>
-                        <Link className={styles.left_options_link} to={path}><Button className={styles.left_options} variant="success">Visit Profile</Button></Link>
-                    </>
-                    :
-                    <></>
-                }
+            {
+                cookie.authenticated
+                ?
+                <div className={styles.content}>
+                    <div className={styles.username}>{cookie.username}</div>
+                    <Link className={styles.left_options_link} to={path}><Button className={styles.left_options} variant="success">Visit Profile</Button></Link>
+                </div>
+                :
+                <></>
+            }
                 {
                     cookie.authenticated
                     ?

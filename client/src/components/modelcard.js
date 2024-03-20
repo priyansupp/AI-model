@@ -4,6 +4,7 @@ import styles from './modelcard.module.css';
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { FaHeart } from 'react-icons/fa';
 
 function ModelCard(props) {
     const doc = props.doc;
@@ -33,18 +34,21 @@ function ModelCard(props) {
 
     if(props.clicked) {
         return (
-            <div className={styles.model}>
+            <div className={styles.query}>
                 <div className= {styles.header}>
                     <div className={styles.model_logo}>
                         <img src={logo}/>
                     </div>
                     <div className={styles.details}>
-                        <div><Link to={path}>{username}</Link> / {doc.title}</div>
-                        <div>{doc.category}</div>
+                        <div className={styles.userinfo}>
+                            <Link to={path}>{username}</Link>
+                            <span className={styles.right}>{Date(doc.date)}</span>
+                        </div>
+                        <div>{doc.title}</div>
                     </div>
                 </div>
                 <div className={styles.modelcontent}>
-                    <div>Likes: {doc.likes}</div>
+                    <div className={styles.likes}>Likes: {doc.likes} <FaHeart /> </div>
                     <div className={styles.desc}>
                         <p>{doc.content}</p>
                     </div>
@@ -64,7 +68,7 @@ function ModelCard(props) {
                     </div>
                 </div>
                 <div onClick={handleClick} className={styles.modelcontent}>
-                    <div>Likes: {doc.likes.length}</div>
+                    <div>Likes: {doc.likes.length} <FaHeart /> </div>
                     <div className={styles.rating_stars}>
                         <span>Rating: </span>
                         <span className="rating-stars">{rating}</span>

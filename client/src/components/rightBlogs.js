@@ -29,7 +29,7 @@ function RightBlogs(props) {
     return (
         <div classname={styles.modelcontainer}>
             <div className={styles.heading}>
-                Blogs
+                Discussion Forum
             </div>
 
             <div className= {styles.display}>

@@ -19,7 +19,7 @@
 .display {
     background-color: #198754;
     flex: 80%;
-    height: 500px;
+    height: var(--maxH);
 }
   
   
