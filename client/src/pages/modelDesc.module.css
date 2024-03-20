@@ -56,7 +56,6 @@
  .like {
     border-radius: 20px;
     font-size: 14px;
-    font-weight: bold;
     width: 100px;
     text-align: center;
     cursor: pointer;
@@ -67,14 +66,13 @@
  }
  .like:hover {
     color: black;
-    background-color: red;
+    background-color: pink;
  }
 
  .rate {
     border-radius: 20px;
-    background-color: goldenrod;
+    background-color: rgb(255, 201, 64);
     font-size: 14px;
-    font-weight: bold;
     width: 100px;
     text-align: center;
     cursor: pointer;

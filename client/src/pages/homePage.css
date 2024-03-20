@@ -10,17 +10,17 @@
  .left {
   background-color: white;
   flex: 20%;
-  height: 520px;
+  height: var(--maxH);
 }
 
 .center {
   background-color: whitesmoke;
   flex: 40%;
-  height:520px;
+  height: var(--maxH);
 }
 
  .right {
   flex: 30%;
-  height: 520px;
+  height: var(--maxH);
 }
 

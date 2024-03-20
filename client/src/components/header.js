@@ -1,11 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 import axios from 'axios';
 
 function Header() {
@@ -35,7 +32,7 @@ function Header() {
             navbarScroll
           >
             <Nav.Link href="/models">Models</Nav.Link>
-            <Nav.Link href="/blogs">Blogs</Nav.Link>
+            <Nav.Link href="/forum">Discussion Forum</Nav.Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control

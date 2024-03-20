@@ -21,12 +21,12 @@ function App() {
           <Routes>
             <Route index element={<Homepage />} />
             <Route path='/models' element={<Models />} />
-            <Route path='/blogs' element={<Blogs/>} />
+            <Route path='/forum' element={<Blogs/>} />
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />}/>
             <Route path='/profile/:id' element={<Profile />} />
             <Route path='/newModel' element={<NewModelPage />} />
-            <Route path='/newBlog' element={<NewBlogPage />} />
+            <Route path='/newQuery' element={<NewBlogPage />} />
             <Route path='/modelDesc/:id' element={<ModelDesc />} />
           </Routes>
         </BrowserRouter>

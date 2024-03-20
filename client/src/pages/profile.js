@@ -43,17 +43,17 @@ function Profile() {
     return (
         <Container fluid className={styles.container}>
             <Row className={styles.row}>
-                <Col md={4} className={styles['left-container']}>
+                <Col md={3} className={styles['left-container']}>
                     <div className={styles.name}>
-                    <div>UserName: {user.username}</div>
-                    <div>Name: {user.name}</div>
-                    <div>Email Id: {user.email}</div>
-                    <div className={styles.picture}>
+                        <div style={{ fontSize: '40px', fontWeight: '800' }}>{user.username}</div>
+                        <div style={{ fontSize: '24px' }}>{user.name}</div>
+                        <div style={{ fontSize: '16px', fontStyle: 'italic' }}>{user.email}</div>
                     </div>
-                    <img src={logo} alt="Profile" className="img-fluid" />
+                    <div className={styles.picture}>
+                        <img src={logo} alt="Profile" className="img-fluid" />
                     </div>
                 </Col>
-                <Col md={8} className={styles['right-container']}>
+                <Col md={9} className={styles['right-container']}>
                     <Card> 
                         <Card.Body>
                             <h3>Models</h3>
@@ -67,7 +67,7 @@ function Profile() {
                     <div className={styles.gap}></div>
                     <Card>
                         <Card.Body>
-                            <h3>Blogs</h3>
+                            <h3>Queries</h3>
                             <div className={styles.modelSection}>
                                 {blogs.map((blog) => (
                                     <ModelCard key={blog._id} doc={blog} clicked={true} />

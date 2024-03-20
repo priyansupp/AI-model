@@ -67,7 +67,7 @@ function NewModelPage() {
   };
 
   return (
-    <div className="container">
+    <div className={styles.container}>
       <div className='row justify-content-center'>
         <div className='col-md-6'>
           <div className='card'>
@@ -142,7 +142,7 @@ function NewModelPage() {
                     required
                   />
                 </div>
-                <div className='form-group text-center'>
+                <div className='form-group text-center mt-2'>
                   <button type='submit' className="btn btn-success">Create Model</button>
                 </div>
                 {validationError && (

@@ -67,15 +67,15 @@ function NewBlogPage() {
   };
 
   return (
-    <div className="container">
+    <div className={styles.container}>
       <div className='row justify-content-center'>
         <div className='col-md-6'>
           <div className='card'>
             <div className='card-body'>
-              <h2 className='card-title text-center'>Post a new blog</h2>
+              <h2 className='card-title text-center'>Post your Query</h2>
               <form onSubmit={handleSubmit}>
                 <div className='form-group'>
-                  <label className= {styles.label}>User Name:</label>
+                  <label className= {styles.label}>Username:</label>
                   <input
                     type='text'
                     className='form-control'
@@ -86,7 +86,7 @@ function NewBlogPage() {
                 </div>
                 {/* { isAuthenticated ? <p>ha logged in hai</p> : <p>Nhi hai logged in</p> } */}
                 <div className='form-group'>
-                  <label className= {styles['label']}>Blog Name:</label>
+                  <label className= {styles['label']}>Subject:</label>
                   <input
                     type='text'
                     className='form-control'
@@ -110,7 +110,7 @@ function NewBlogPage() {
                   </select>
                 </div>
                 <div className='form-group'>
-                  <label className= {styles['label']}>Blog Description:</label>
+                  <label className= {styles['label']}>Explain your query:</label>
                   <textarea
                     className='form-control'
                     value={modelDescription}
@@ -118,8 +118,8 @@ function NewBlogPage() {
                     required
                   />
                 </div>
-                <div className='form-group text-center'>
-                  <button type='submit' className="btn btn-success">Post Blog</button>
+                <div className='form-group text-center mt-3'>
+                  <button type='submit' className="btn btn-success">Post</button>
                 </div>
                 {validationError && (
                   <div className='alert alert-danger'>{validationError}</div>

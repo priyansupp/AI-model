@@ -22,6 +22,10 @@ const BlogSchema = new Schema({
         enum: ['Text to Image', 'Sentiment Analysis', 'Image Classification', 'Summarization', 'Translation', 'Voice Activity Detection', 'Reinforcement Learning', 'Robotics', 'Video Classification', 'Feature Extraction', 'Object Detection', 'Sentiment Analysis', 'GLOW Model'],
         default: 'Text to Image',
     },
+    date: {
+        type: Date,
+        default: Date.now()
+    },
 })
 
 const BlogModel = model('blogmodel', BlogSchema);
