@@ -58,18 +58,16 @@ function LeftProfile() {
                 :
                 <></>
             }
-            <div className={styles.content}>
                 {
                     cookie.authenticated
                     ?
                     <>
-                        <span className={styles.username}>{cookie.username}</span>
+                        <div className={styles.username}>{cookie.username}</div>
                         <Link className={styles.left_options_link} to={path}><Button className={styles.left_options} variant="success">Visit Profile</Button></Link>
                     </>
                     :
                     <></>
                 }
-            </div>
                 {
                     cookie.authenticated
                     ?

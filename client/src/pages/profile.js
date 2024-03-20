@@ -44,10 +44,12 @@ function Profile() {
         <Container fluid className={styles.container}>
             <Row className={styles.row}>
                 <Col md={4} className={styles['left-container']}>
-                    <div className={styles.name}>{user.username}</div>
-                    <div className={styles.name}>{user.name}</div>
-                    <div className={styles.name}>{user.email}</div>
+                    <div className={styles.name}>
+                    <div>UserName: {user.username}</div>
+                    <div>Name: {user.name}</div>
+                    <div>Email Id: {user.email}</div>
                     <div className={styles.picture}>
+                    </div>
                     <img src={logo} alt="Profile" className="img-fluid" />
                     </div>
                 </Col>
