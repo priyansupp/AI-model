@@ -1,0 +1,26 @@
+.homepage {
+  display: flex;
+  flex-direction: row;
+  z-index: 1;
+  height: auto; 
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+ .left {
+  background-color: white;
+  flex: 20%;
+  height: var(--maxH);
+}
+
+.center {
+  background-color: whitesmoke;
+  flex: 40%;
+  height: var(--maxH);
+}
+
+ .right {
+  flex: 30%;
+  height: var(--maxH);
+}
+

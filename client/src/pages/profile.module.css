@@ -1,0 +1,44 @@
+.container {
+    height: auto;
+  }
+  
+  .gap {
+    height: 25px;
+    background-color: white;
+    width: 100%;
+  }
+
+  .row {
+    height: 100%;
+  }
+  
+  .left-container {
+    height: auto;
+    min-height: var(--maxH);
+    overflow-y: auto;
+    background-color: #198754;
+  }
+  
+  .right-container {
+    height: auto;
+    overflow-y: auto;
+  }
+
+.name{
+  padding-left: 10px;
+  padding-top: 30px;
+  font-size: 18px;
+  color: beige;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.picture{
+  margin-top: 50px;
+  position: relative;
+}
+
+.picture > img {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}

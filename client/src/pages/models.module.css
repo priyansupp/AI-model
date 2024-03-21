@@ -1,0 +1,25 @@
+.modelsPage {
+    height: auto;
+    width: auto;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar {
+    background-color: white;
+    flex: 20%;
+}
+
+.display {
+    background-color: #198754;
+    flex: 80%;
+    height: var(--maxH);
+}
+  
+  
