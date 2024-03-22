@@ -30,6 +30,7 @@ function Register() {
             setCookie('username', user1.username, {path: '/'});
             setCookie('name', user1.name, {path: '/'});
             setCookie('authenticated', true, {path: '/'});
+            setCookie('token', response.data.token, {path: '/'});
             navigate('/');
         }).catch(e => {
             console.log(`Error: ${e}`);
