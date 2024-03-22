@@ -6,9 +6,9 @@ export default function RatingComponent({ id }) {
   const [_, setRating] = useState(0);
 
   // Catch Rating value
-  const handleRating = (rate) => {
+  const handleRating = async (rate) => {
     setRating(rate);
-    axios.patch('https://ai-model-api.azurewebsites.net/'+`/api/models/${id}`, {rating: rate})
+    await axios.patch('https://ai-model-api.azurewebsites.net/'+`/api/models/${id}`, {rating: rate})
     .then(response => {
       console.log(response.data);
     })

@@ -48,9 +48,9 @@ function ModelDesc() {
     });
   }, [id]);
 
-  const handleLike = (e) => {
+  const handleLike = async (e) => {
     e.preventDefault();
-    axios.patch('https://ai-model-api.azurewebsites.net/'+`/api/models/${id}`, {likedBy: cookie.userid})
+    await axios.patch('https://ai-model-api.azurewebsites.net/'+`/api/models/${id}`, {likedBy: cookie.userid})
     .then(response => {
       setLikes(response.data.model.likes.length);
     })

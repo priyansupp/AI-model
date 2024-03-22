@@ -15,9 +15,9 @@ function Register() {
     const [name, setName] = useState('');
     const [_, setCookie] = useCookies(['userid']);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        axios.post('https://ai-model-api.azurewebsites.net/'+'/auth/register', {
+        await axios.post('https://ai-model-api.azurewebsites.net/'+'/auth/register', {
             email: email,
             password: pass,
             username: username,

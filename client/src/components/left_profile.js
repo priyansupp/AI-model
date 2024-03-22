@@ -16,9 +16,9 @@ function LeftProfile() {
     const path = `/profile/${cookie.userid}`;
 
     
-    const handleLogout = (e) => {
+    const handleLogout = async (e) => {
         e.preventDefault();
-        axios.get('https://ai-model-api.azurewebsites.net/'+'/auth/logout')
+        await axios.get('https://ai-model-api.azurewebsites.net/'+'/auth/logout')
         .then(() => {
           console.log(`Logged out`);
         })

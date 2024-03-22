@@ -39,7 +39,7 @@ function NewBlogPage() {
   const [cookie, _] = useCookies();
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const words = modelDescription.trim().split(/\s+/);
@@ -55,7 +55,7 @@ function NewBlogPage() {
       Cat: category,
       Lib: library
     }
-    axios.post('https://ai-model-api.azurewebsites.net/'+'/api/blogs', data)
+    await axios.post('https://ai-model-api.azurewebsites.net/'+'/api/blogs', data)
     .then(response => {
       // console.log(response.data.success);
       console.log('Blog has been posted');

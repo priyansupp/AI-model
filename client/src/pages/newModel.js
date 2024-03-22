@@ -39,7 +39,7 @@ function NewModelPage() {
   const [cookie, _] = useCookies();
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const words = modelDescription.trim().split(/\s+/);
@@ -55,7 +55,7 @@ function NewModelPage() {
       Cat: category,
       Lib: library  
     }
-    axios.post('https://ai-model-api.azurewebsites.net/'+'/api/models', data)
+    await axios.post('https://ai-model-api.azurewebsites.net/'+'/api/models', data)
     .then(response => {
       // console.log(response.data.success);
       alert('Model has been created');
