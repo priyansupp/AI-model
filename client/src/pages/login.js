@@ -16,7 +16,7 @@ function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('/auth/login', {
+        await axios.post('https://ai-model-api.azurewebsites.net/'+'/auth/login', {
             email: email,
             password: pass
         }).then((response) => {

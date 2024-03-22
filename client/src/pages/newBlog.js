@@ -55,7 +55,7 @@ function NewBlogPage() {
       Cat: category,
       Lib: library
     }
-    axios.post('/api/blogs', data)
+    axios.post('https://ai-model-api.azurewebsites.net/'+'/api/blogs', data)
     .then(response => {
       // console.log(response.data.success);
       console.log('Blog has been posted');

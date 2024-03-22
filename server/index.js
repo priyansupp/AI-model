@@ -27,13 +27,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cookieParser());
 
-app.all('/', (req, res) => {
-    console.log("Request received successfully");
-});
-
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
-
 
 // listen
 const PORT = process.env.PORT || 4000;

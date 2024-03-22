@@ -13,7 +13,7 @@ function ModelCard(props) {
 
     const [username, setUsername] = useState('');
     useEffect(() => {
-        axios.get(`/api/profile/${doc.userid}`)
+        axios.get('https://ai-model-api.azurewebsites.net/'+`/api/profile/${doc.userid}`)
         .then(response => {
             // console.log(response.data);
             setUsername(response.data.username)

@@ -4,8 +4,6 @@ import Category from "./category";
 import styles from './categoriesHolder.module.css';
 import { useState } from "react";
 
-
-
 const tasks = ['All', 'Text to Image', 'Sentiment Analysis', 'Image Classification', 'Summarization', 'Translation', 'Voice Activity Detection', 'Reinforcement Learning', 'Robotics', 'Video Classification', 'Feature Extraction', 'Object Detection', 'Sentiment Analysis', 'GLOW Model'];
 let taskObject = [];
 let x = 1;

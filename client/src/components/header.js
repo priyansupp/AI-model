@@ -3,22 +3,8 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import axios from 'axios';
 
 function Header() {
-
-  const handleLogout = (e) => {
-    e.preventDefault();
-    axios.get('/auth/logout')
-    .then(() => {
-      console.log(`Logged out`);
-    })
-    .catch(e => {
-      console.log(`Error in logging out: ${e}`);
-    });
-    // removeCookie('userid');
-    // removeCookie('token');
-  }
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary">

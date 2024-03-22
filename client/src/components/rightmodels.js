@@ -10,7 +10,7 @@ function RightModels(props) {
     const { task, library } = props;
     const [docs, setDocs] = useState([]);
     useEffect(() => {
-        axios.get('/api/models')
+        axios.get('https://ai-model-api.azurewebsites.net/'+'/api/models')
         .then((response) => {
             const data = response.data;
             const res1 = data.filter(x => {

@@ -21,7 +21,7 @@ function ModelDesc() {
   const [cookie, setCookie] = useCookies();
 
   useEffect(() => {
-    axios.get(`/api/models/${id}`)
+    axios.get('https://ai-model-api.azurewebsites.net/'+`/api/models/${id}`)
     .then(response => {
       setLikes(response.data.likes.length);
     })
@@ -31,11 +31,11 @@ function ModelDesc() {
   }, []);
 
   useEffect(() => {
-    axios.get(`/api/models/${id}`)
+    axios.get('https://ai-model-api.azurewebsites.net/'+`/api/models/${id}`)
     .then(response => {
       setModel(response.data);
       setLikes(response.data.likes.length);
-      axios.get(`/api/profile/${response.data.userid}`)
+      axios.get('https://ai-model-api.azurewebsites.net/'+`/api/profile/${response.data.userid}`)
       .then(res2 => {
         setUser(res2.data);
       })
@@ -50,7 +50,7 @@ function ModelDesc() {
 
   const handleLike = (e) => {
     e.preventDefault();
-    axios.patch(`/api/models/${id}`, {likedBy: cookie.userid})
+    axios.patch('https://ai-model-api.azurewebsites.net/'+`/api/models/${id}`, {likedBy: cookie.userid})
     .then(response => {
       setLikes(response.data.model.likes.length);
     })

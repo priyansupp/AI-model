@@ -17,7 +17,7 @@ function Register() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('/auth/register', {
+        axios.post('https://ai-model-api.azurewebsites.net/'+'/auth/register', {
             email: email,
             password: pass,
             username: username,

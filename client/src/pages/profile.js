@@ -15,7 +15,7 @@ function Profile() {
     const [user, setUser] = useState({});
 
     useEffect(() => {
-        axios.get(`/api/models/profile/${id}`)
+        axios.get('https://ai-model-api.azurewebsites.net/'+`/api/models/profile/${id}`)
         .then(response => {
             setModels(response.data);
         })
@@ -23,7 +23,7 @@ function Profile() {
             console.log(`Error in fetching models: ${e}`);
         });
 
-        axios.get(`/api/blogs/profile/${id}`)
+        axios.get('https://ai-model-api.azurewebsites.net/'+`/api/blogs/profile/${id}`)
         .then(response => {
             setBlogs(response.data);
         })
@@ -31,7 +31,7 @@ function Profile() {
             console.log(`Error in fetching blogs: ${e}`);
         });
 
-        axios.get(`/api/profile/${id}`)
+        axios.get('https://ai-model-api.azurewebsites.net/'+`/api/profile/${id}`)
         .then(response => {
             setUser(response.data);
         })

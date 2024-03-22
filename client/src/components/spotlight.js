@@ -18,7 +18,7 @@ function Spotlight() {
         // console.log(clicked);
         // const url = (clicked ? '/api/blogs' : '/api/models');
         const url = '/api/models';
-        axios.get(url)
+        axios.get('https://ai-model-api.azurewebsites.net/'+url)
         .then((response) => {
             setDocs(response.data.filter(doc => {
                 if(doc.likes.length >= 1) return true;

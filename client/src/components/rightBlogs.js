@@ -10,7 +10,7 @@ function RightBlogs(props) {
     const { task, library } = props;
     const [docs, setDocs] = useState([]);
     useEffect(() => {
-        axios.get('/api/blogs')
+        axios.get('https://ai-model-api.azurewebsites.net/'+'/api/blogs')
         .then((response) => {
             const data = response.data;
             const res1 = data.filter(x => {

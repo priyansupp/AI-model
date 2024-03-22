@@ -18,7 +18,7 @@ function LeftProfile() {
     
     const handleLogout = (e) => {
         e.preventDefault();
-        axios.get('/auth/logout')
+        axios.get('https://ai-model-api.azurewebsites.net/'+'/auth/logout')
         .then(() => {
           console.log(`Logged out`);
         })
