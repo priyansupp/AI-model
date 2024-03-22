@@ -19,7 +19,7 @@ function Login() {
         await axios.post('https://ai-model-api.azurewebsites.net/'+'/auth/login', {
             email: email,
             password: pass
-        }).then((response) => {
+        }, { withCredentials: true }).then((response) => {
             const user1 = response.data.user;
             console.log(`User logged in: ${user1.username}`);
             setCookie('userid', user1._id, {path: '/'});
