@@ -55,9 +55,9 @@ function NewModelPage() {
       Cat: category,
       Lib: library  
     }
-    await axios.post('https://ai-model-api.azurewebsites.net/'+'/api/models', data)
+    await axios.post('https://ai-model-api.azurewebsites.net/'+'/api/models', data, { withCredentials: true })
     .then(response => {
-      // console.log(response.data.success);
+      console.log(response.data);
       alert('Model has been created');
       navigator('/');
     })
