@@ -53,9 +53,15 @@ function NewModelPage() {
       Desc: modelDescription,
       Url: githubLink,
       Cat: category,
-      Lib: library  
+      Lib: library,
     }
-    await axios.post('https://ai-model-api.azurewebsites.net/'+'/api/models', data, { withCredentials: true })
+    await axios.post('https://ai-model-api.azurewebsites.net/'+'/api/models', data, 
+    { 
+      withCredentials: true,
+      headers: {
+        Authorization: `Bearer ${cookie['token']}` // Include the access token in the Authorization header
+      },
+     })
     .then(response => {
       console.log(response.data);
       alert('Model has been created');

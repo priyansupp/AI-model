@@ -12,7 +12,7 @@ function Login() {
 
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
-    const [_, setCookie] = useCookies(['userid']);
+    const [_, setCookie] = useCookies();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
